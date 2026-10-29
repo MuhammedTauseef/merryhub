@@ -8,9 +8,9 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = pageMetadata({
   path: "/card-maker",
-  title: "Free Christmas Card Maker — Make & Share Merry Christmas Cards",
+  title: "Free Christmas Card Maker — Make & Share Cards",
   description:
-    "Make a beautiful Merry Christmas card online for free: pick a design, add a name and message, download the picture and share it on WhatsApp or Facebook. No sign-up.",
+    "Make a Merry Christmas card online for free: pick a design, add a name and message, download the picture and share it on WhatsApp or Facebook. No sign-up.",
   ogDescription:
     "Design a personal Merry Christmas card in seconds and share it with the people you love. Free, no sign-up.",
 });
