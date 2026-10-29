@@ -20,7 +20,7 @@ export function categoryFaqs(cat: WishCategory): FaqItem[] {
     },
     {
       q: `How many wishes are in this collection?`,
-      a: `This collection has ${cat.wishes.length} original wishes. Across all ${WISH_CATEGORIES.length} collections the library holds ${totalWishes} wishes — for family, friends, your boss, coworkers, clients, teachers and kids, plus funny, short, romantic and religious collections and wishes in Urdu, Hindi, Spanish and Tagalog.`,
+      a: `This collection has ${cat.wishes.length} original wishes. Across all ${WISH_CATEGORIES.length} collections the library holds ${totalWishes} wishes — for family, friends, your boss, coworkers, clients, teachers and kids, plus funny, short, romantic and religious collections and wishes in Spanish and Portuguese.`,
     },
   ];
 }
@@ -36,7 +36,7 @@ export const WISHES_INDEX_FAQS: FaqItem[] = [
   },
   {
     q: "Which languages are the wishes in?",
-    a: "Most collections are in English. There are also full collections in Urdu (in Urdu script and in Roman Urdu), Hindi, Spanish and Tagalog, each written for the people who celebrate in those languages.",
+    a: "Most collections are in English. There are also full collections in Spanish and Portuguese, each written for the people who celebrate Christmas in those languages.",
   },
   {
     q: "Can I send a wish as a picture card on WhatsApp?",
