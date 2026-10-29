@@ -49,6 +49,15 @@ export default function AdminHomePage() {
     router.replace("/admin/login");
   }
 
+  async function onDownloadPack(name: "full-pack" | "editable-premium") {
+    try {
+      const { url } = await adminApi<{ url: string }>(`/api/admin/files/${name}`);
+      window.open(url, "_blank", "noopener");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Download failed.");
+    }
+  }
+
   return (
     <section className="page-body">
       <div className="wrap">
@@ -63,6 +72,33 @@ export default function AdminHomePage() {
             </button>
           </div>
         </div>
+
+        {supabaseConfigured && (
+          <div className="panel mt-24">
+            <h2 style={{ marginTop: 0, fontSize: "1.15rem" }}>Pack files — admin only</h2>
+            <p className="hint" style={{ marginTop: 0 }}>
+              Your private copies of the paid pack. These buttons work only while you are
+              signed in as the admin — the files have no public link. Buyers get the same
+              files from Whop after payment.
+            </p>
+            <div className="admin-actions">
+              <button
+                type="button"
+                className="btn btn-gold"
+                onClick={() => void onDownloadPack("full-pack")}
+              >
+                ⬇ Full pack (55 pages)
+              </button>
+              <button
+                type="button"
+                className="btn btn-green"
+                onClick={() => void onDownloadPack("editable-premium")}
+              >
+                ⬇ Editable Premium
+              </button>
+            </div>
+          </div>
+        )}
 
         {!supabaseConfigured ? (
           <p className="hint mt-24">
