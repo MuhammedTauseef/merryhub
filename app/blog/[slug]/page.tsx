@@ -11,6 +11,16 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 // panel goes live without a redeploy.
 export const dynamic = "force-dynamic";
 
+// The editor's content format allows **bold** spans (like the other
+// projects' editors). Stored text keeps the markers so editing stays
+// lossless; rendering converts them to <strong> — never show raw **.
+function renderInline(text: string) {
+  const parts = text.split(/\*\*(.+?)\*\*/g);
+  return parts.map((part, i) =>
+    i % 2 === 1 ? <strong key={i}>{part}</strong> : part,
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -85,11 +95,13 @@ export default async function BlogPostPage({
             {post.sections.map((section) => (
               <section key={section.h2}>
                 <h2>{section.h2}</h2>
-                {section.paragraphs?.map((para, i) => <p key={i}>{para}</p>)}
+                {section.paragraphs?.map((para, i) => (
+                  <p key={i}>{renderInline(para)}</p>
+                ))}
                 {section.bullets && (
                   <ul>
                     {section.bullets.map((b) => (
-                      <li key={b}>{b}</li>
+                      <li key={b}>{renderInline(b)}</li>
                     ))}
                   </ul>
                 )}
