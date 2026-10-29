@@ -151,7 +151,7 @@ export const WISH_CATEGORIES: WishCategory[] = [
     title: "Funny Christmas Wishes",
     heading: "Funny Christmas Wishes",
     metaDescription:
-      "Funny Christmas wishes and messages that actually land — light-hearted lines for friends, family and coworkers. Copy one or put it on a card for an instant laugh.",
+      "Funny Christmas wishes and messages that land — light-hearted lines for friends, family and coworkers. Copy one or put it on a card for an instant laugh.",
     intro:
       "Not every Christmas message has to be misty-eyed. These funny wishes keep it festive and friendly — perfect for friends, siblings, coworkers and anyone who appreciates a good groan with their greetings.",
     wishes: [

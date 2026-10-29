@@ -14,6 +14,8 @@ interface PageMetaInput {
   image?: string;
   /** When true, `title` is used verbatim (no "| MerryHub" suffix). */
   absoluteTitle?: boolean;
+  /** OpenGraph type; "article" for blog posts. Defaults to "website". */
+  ogType?: "website" | "article";
 }
 
 /**
@@ -29,6 +31,7 @@ export function pageMetadata({
   ogDescription,
   image,
   absoluteTitle,
+  ogType,
 }: PageMetaInput): Metadata {
   const url = path === "/" ? SITE_URL : `${SITE_URL}${path}`;
   return {
@@ -36,18 +39,22 @@ export function pageMetadata({
     description,
     alternates: { canonical: path },
     openGraph: {
-      type: "website",
+      type: ogType ?? "website",
       siteName: SITE_NAME,
       title: ogTitle ?? title,
       description: ogDescription ?? description,
       url,
-      ...(image ? { images: [{ url: image, alt: ogTitle ?? title }] } : {}),
+      // Always emit a share image: pages without their own cover use the
+      // site-wide generated image. (Next only auto-attaches the
+      // opengraph-image file convention to the homepage; inner pages that
+      // set their own openGraph would otherwise ship with no og:image.)
+      images: [{ url: image ?? `${SITE_URL}/opengraph-image`, alt: ogTitle ?? title }],
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle ?? title,
       description: ogDescription ?? description,
-      ...(image ? { images: [image] } : {}),
+      images: [image ?? `${SITE_URL}/opengraph-image`],
     },
   };
 }
