@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = pageMetadata({
   path: "/christmas-quiz",
-  title: "The Big Christmas Quiz — 12 Questions, Printable with Answers",
+  title: "The Big Christmas Quiz — Printable, with Answers",
   description:
     "A free printable Christmas quiz: 12 festive questions with an answer key. Play it on screen, or print it for the Christmas table, classroom or office party.",
   ogTitle: "The Big Christmas Quiz — Printable, with Answer Key",
