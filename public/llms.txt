@@ -1,6 +1,6 @@
 # MerryHub
 
-> MerryHub (https://merryhub.vercel.app) is a free Christmas website: a personalised Christmas card maker, a library of 180 original Christmas wishes in 15 collections, a live countdown to Christmas Day, an elf name generator, a 12-question Christmas quiz, and a printable Christmas pack with a free sample. Everything is free to use with no sign-up; the full printable pack will be sold from the printables page when its shop launches.
+> MerryHub (https://merryhub.vercel.app) is a free Christmas website: a personalised Christmas card maker, a library of 156 original Christmas wishes in 13 collections, a live countdown to Christmas Day, an elf name generator, a 12-question Christmas quiz, and a printable Christmas pack with a free sample. Everything is free to use with no sign-up; the full printable pack is sold from the printables page for $2.
 
 ## Free tools
 
@@ -11,7 +11,7 @@
 
 ## Christmas wishes library
 
-180 original wishes across 15 collections at https://merryhub.vercel.app/wishes — for family, friends, boss, coworkers, clients and teachers; funny, short, romantic, religious and kids' collections; and collections in Urdu (Urdu script and Roman Urdu), Hindi, Spanish and Tagalog. Every wish can be copied or turned into a personalised card with the card maker.
+156 original wishes across 13 collections at https://merryhub.vercel.app/wishes — for family, friends, boss, coworkers, clients and teachers; funny, short, romantic, religious and kids' collections; and collections in Spanish and Portuguese. Every wish can be copied or turned into a personalised card with the card maker.
 
 ## Printables
 
