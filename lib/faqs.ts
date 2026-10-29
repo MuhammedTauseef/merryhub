@@ -59,7 +59,7 @@ export const PRINTABLES_FAQS: FaqItem[] = [
   },
   {
     q: "When can I buy the full pack?",
-    a: "Every file is finished and test-printed; we are setting up the shop now. The buy button will appear on this page when it launches — there are no pre-orders and no email sign-ups in the meantime.",
+    a: "Right now — the pack is finished and on sale. Use the Get the Full Pack button on this page: secure checkout by Whop, and both PDFs are delivered to you right after payment. There are no pre-orders and no email sign-ups.",
   },
   {
     q: "Can I print copies for my class or office?",
