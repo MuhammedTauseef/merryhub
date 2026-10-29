@@ -9,9 +9,9 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = pageMetadata({
   path: "/wishes",
-  title: "Merry Christmas Wishes, Messages & Greetings for Everyone",
+  title: "Merry Christmas Wishes, Messages & Greetings",
   description:
-    "Original Merry Christmas wishes for family, friends, boss and coworkers, partners, kids and more — plus funny and short one-liners. Copy any wish or turn it into a card.",
+    "Original Merry Christmas wishes for family, friends, boss, coworkers, partners and kids — plus funny and short one-liners. Copy any wish or turn it into a card.",
   ogTitle: "Merry Christmas Wishes, Messages & Greetings",
   ogDescription:
     "Heartfelt, funny, romantic and short Christmas wishes for everyone on your list. Copy or make a card, free.",
