@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   verification: {
     google: "jXx7jWarPskM3UN7e2YihwpzUjZAzKJim_fvKRz-kw8",
+    other: {
+      "p:domain_verify": "5b269687a4520f7e25148c518136433d",
+    },
   },
   title: {
     default: `${SITE_NAME} — ${SITE_TAGLINE}`,
