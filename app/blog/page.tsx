@@ -38,7 +38,7 @@ export default async function BlogIndexPage() {
               {posts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="category-card blog-card">
                   {post.heroImage && (
-                    <img className="blog-card-img" src={post.heroImage} alt="" />
+                    <img className="blog-card-img" src={post.heroImage} alt={post.title} />
                   )}
                   <p className="blog-meta">
                     <span className="blog-tag">{post.category}</span>
