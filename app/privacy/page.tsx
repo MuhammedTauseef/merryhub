@@ -47,10 +47,22 @@ export default function PrivacyPage() {
           <h2>Cookies</h2>
           <p>
             The core tools do not set tracking cookies. If we add privacy-friendly analytics or
-            advertising (for example, Google AdSense) in the future, those services may set
-            cookies to measure visits or to personalise ads, and this policy will be updated
-            before or when that happens. You can block or delete cookies in your browser
-            settings at any time, and the site will still work.
+            advertising (for example, Google AdSense), those services may set cookies to
+            measure visits or to personalise ads, and this policy will be updated before or
+            when that happens. You can block or delete cookies in your browser settings at any
+            time, and the site will still work. Our <a href="/cookies">Cookie Policy</a>{" "}
+            explains this in full.
+          </p>
+          <h2>Advertising partners</h2>
+          <p>
+            When advertising is active on {SITE_NAME}, third-party vendors, including Google,
+            use cookies to serve ads based on a visitor's prior visits to this website or
+            other websites. Google's use of advertising cookies enables it and its partners
+            to serve ads to our visitors based on their visits to this site and/or other
+            sites on the Internet. You may opt out of personalised advertising by visiting{" "}
+            <a href="https://www.google.com/settings/ads">Google Ads Settings</a>, and you
+            can opt out of some third-party vendors' personalised-advertising cookies at{" "}
+            <a href="https://www.aboutads.info/choices/">aboutads.info/choices</a>.
           </p>
           <h2>Third-party links and sharing</h2>
           <p>
