@@ -10,10 +10,10 @@ export const metadata: Metadata = pageMetadata({
   path: "/printables",
   title: "Printable Christmas Cards, Gift Tags, Games, Elf Kit & Advent Cards — Free Sample",
   description:
-    "The MerryHub Printable Pack is ready: 55 print-ready A4 pages — 12 greeting cards, 24 gift tags, the big quiz, an 11-game bundle, Santa letters with a Nice List certificate, the Elf Kit and 25 Advent activity cards. Download the free sample now.",
+    "The MerryHub Printable Pack is ready: 55 print-ready A4 pages — 12 greeting cards, 24 gift tags, the big quiz, an 11-game bundle, Santa letters with a Nice List certificate, the Elf Kit and 25 Advent activity cards — plus an Editable Premium edition you can type names into before printing. Download the free sample now.",
   ogTitle: "Printable Christmas Cards, Games & Elf Kit — Free Sample",
   ogDescription:
-    "55 pages of print-at-home Christmas joy: cards, tags, games, Santa letters, an Elf Kit and Advent activity cards. Free sample available right now.",
+    "55 pages of print-at-home Christmas joy: cards, tags, games, Santa letters, an Elf Kit and Advent activity cards — plus an editable edition for typed names. Free sample available right now.",
 });
 
 const PACK_CONTENTS = [
@@ -67,8 +67,8 @@ export default function PrintablesPage() {
           <h1>Printable Christmas Cards & Games</h1>
           <p>
             The MerryHub Printable Pack is finished: 55 print-ready A4 pages of cards, tags,
-            games and North Pole paperwork. The full pack goes on sale here very soon — and a
-            free sample is ready below, right now.
+            games and North Pole paperwork — now with an Editable Premium edition, launching
+            here for $2. A free sample is ready below, right now.
           </p>
         </div>
       </section>
@@ -89,6 +89,29 @@ export default function PrintablesPage() {
                 <p>{item.text}</p>
               </div>
             ))}
+          </div>
+
+          <div className="coming-soon mt-40">
+            <div style={{ fontSize: "2.6rem" }} aria-hidden="true">
+              ✍️
+            </div>
+            <h2>New: the Editable Premium edition</h2>
+            <p>
+              Every pack now includes a second, editable copy of the name-it items — 13 pages
+              with 70 fillable fields. Open the PDF, type the names, then print: no handwriting
+              to redo, no spelling mistakes on the big night.
+            </p>
+            <ul style={{ textAlign: "left", maxWidth: 520, margin: "0 auto" }}>
+              <li><strong>Santa&apos;s letter</strong> — the child&apos;s name, age and proud-of moment</li>
+              <li><strong>Nice List certificate</strong> — the name in big letters, plus the date</li>
+              <li><strong>All 24 gift tags</strong> — To and From on every tag</li>
+              <li><strong>Table place cards</strong> — every guest&apos;s name, typed</li>
+              <li><strong>The Elf letters</strong> — the child&apos;s name and the elf&apos;s name</li>
+            </ul>
+            <p className="hint mt-24">
+              Works in any free PDF reader or browser. The games, quiz and activity cards stay
+              print-and-play — those are for pencils, not keyboards.
+            </p>
           </div>
 
           <div className="coming-soon mt-40">
