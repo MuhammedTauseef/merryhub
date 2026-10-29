@@ -129,6 +129,51 @@ export default function HomePage() {
       </section>
 
       <section className="section">
+        <div className="wrap">
+          <h2>Printables for paper instead of pixels</h2>
+          <p className="section-lede">
+            Two ways in: a free sample to try right now, and the full pack — every game,
+            card and letter in one download.
+          </p>
+          <div className="tool-grid">
+            <div className="tool-card">
+              <span className="tool-icon" aria-hidden="true">🆓</span>
+              <h3>Free printable sample</h3>
+              <p>
+                A greeting card and a gift-tags sheet from the pack — download, print, and
+                see the quality for yourself. No email needed.
+              </p>
+              <a href="/printables/merryhub-printables-sample.pdf" className="tool-go">
+                Download the free sample →
+              </a>
+            </div>
+            <div className="tool-card">
+              <span className="tool-icon" aria-hidden="true">🎁</span>
+              <h3>The full pack — $2</h3>
+              <p>
+                55 pages: 11 party games, cards, gift tags, Santa letters, a Nice List
+                certificate, an Elf Kit and Advent cards — PLUS the editable edition with
+                70 type-in name fields.
+              </p>
+              <a
+                href="https://whop.com/merryhub/merryhub-christmas-printable-pack-editable-print-and-play-55-pages-editab/"
+                target="_blank"
+                rel="noreferrer"
+                className="tool-go"
+              >
+                Get the Full Pack — $2 →
+              </a>
+            </div>
+          </div>
+          <div className="center mt-24">
+            <Link href="/printables" className="btn btn-outline-dark">
+              See everything inside the pack
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-alt">
         <div className="wrap prose center">
           <h2>Christmas Day {parts.christmasYear} falls on {longDate(parts.target)}</h2>
           <p>
