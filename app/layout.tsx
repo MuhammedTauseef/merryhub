@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     "christmas card maker",
     "elf name generator",
     "christmas quiz",
-    "christmas wishes in urdu",
-    "christmas wishes in hindi",
     "feliz navidad wishes",
-    "maligayang pasko wishes",
+    "christmas wishes in spanish",
+    "christmas wishes in portuguese",
+    "feliz natal wishes",
     "christmas greetings",
   ],
   openGraph: {

@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = pageMetadata({
   path: "/",
-  title: "MerryHub — Free Christmas Card Maker, Wishes & Countdown 2026",
+  title: "MerryHub — Christmas Card Maker, Wishes & Countdown 2026",
   description: SITE_DESCRIPTION,
   absoluteTitle: true,
 });

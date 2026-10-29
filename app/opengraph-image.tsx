@@ -42,7 +42,7 @@ export default function OpengraphImage() {
           {SITE_TAGLINE}
         </div>
         <div style={{ display: "flex", fontSize: 26, color: "#e3b341", marginTop: 26 }}>
-          Free cards - Wishes in 5 languages - Elf names - Christmas quiz
+          Free cards - Wishes in 3 languages - Elf names - Christmas quiz
         </div>
       </div>
     ),
