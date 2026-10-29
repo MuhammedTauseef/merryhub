@@ -10,7 +10,7 @@ export interface FaqItem {
  * emitted as FAQPage structured data — the schema never claims anything
  * the visitor cannot read on the page.
  */
-export default function Faq({ items, heading = "Questions, answered" }: { items: FaqItem[]; heading?: string }) {
+export default function Faq({ items, heading = "Frequently asked questions" }: { items: FaqItem[]; heading?: string }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
