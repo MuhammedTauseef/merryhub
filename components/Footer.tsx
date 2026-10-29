@@ -13,7 +13,7 @@ export default function Footer() {
           </p>
           <p className="footer-blurb">
             Free Christmas fun for everyone: a card maker that spreads smiles, a
-            big library of original wishes in five languages, elf names, a
+            big library of original wishes in three languages, elf names, a
             printable quiz and a live countdown — no sign-up, no fuss.
           </p>
         </div>
