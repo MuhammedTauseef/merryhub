@@ -8,9 +8,9 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = pageMetadata({
   path: "/printables",
-  title: "Printable Christmas Cards, Gift Tags, Games, Elf Kit & Advent Cards — Free Sample",
+  title: "Printable Christmas Cards & Games — Free Sample",
   description:
-    "The MerryHub Printable Pack is ready: 55 print-ready A4 pages — 12 greeting cards, 24 gift tags, the big quiz, an 11-game bundle, Santa letters with a Nice List certificate, the Elf Kit and 25 Advent activity cards — plus an Editable Premium edition you can type names into before printing. Download the free sample now.",
+    "55 print-ready A4 pages: greeting cards, gift tags, a quiz, an 11-game bundle, Santa letters, an Elf Kit and Advent cards — plus a type-in edition. Free sample.",
   ogTitle: "Printable Christmas Cards, Games & Elf Kit — Free Sample",
   ogDescription:
     "55 pages of print-at-home Christmas joy: cards, tags, games, Santa letters, an Elf Kit and Advent activity cards — plus an editable edition for typed names. Free sample available right now.",
