@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = pageMetadata({
   path: "/about",
   title: "About Us",
-  description: `About ${SITE_NAME} — a small, free Christmas website with a shareable card maker, original wishes in five languages, an elf name generator, a printable quiz and a live countdown.`,
+  description: `About ${SITE_NAME} — a small, free Christmas website with a shareable card maker, original wishes in three languages, an elf name generator, a printable quiz and a live countdown.`,
 });
 
 export default function AboutPage() {
@@ -32,7 +32,7 @@ export default function AboutPage() {
             A <strong>card maker</strong> right on the homepage that turns your words into a
             beautiful picture you can download and share anywhere; a library of{" "}
             <strong>original Christmas wishes</strong> written by us for family, friends, bosses,
-            clients, teachers, partners and kids — in English, Urdu, Hindi, Spanish and Tagalog;
+            clients, teachers, partners and kids — in English, Spanish and Portuguese;
             an <strong>elf name generator</strong>; a <strong>printable Christmas quiz</strong>;
             and a live <strong>countdown</strong> in the bar at the top of every page, ticking
             down to the big day.
