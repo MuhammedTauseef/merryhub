@@ -1,0 +1,130 @@
+<!doctype html><html><head><meta charset='utf-8'><title>MerryHub — The Elf Kit</title><style>
+@page { size: A4 portrait; margin: 0; }
+* { margin:0; padding:0; box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+html,body { font-family:'Segoe UI','Noto Sans',Arial,sans-serif; color:#22302a; }
+.serif { font-family: Georgia,'Noto Serif','Times New Roman',serif; }
+.page { width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; background:#fffdf8; }
+.page:last-child { page-break-after:avoid; }
+.sheetfoot { position:absolute; left:0; right:0; bottom:4mm; text-align:center; font-size:7.5pt; color:#93a197; letter-spacing:.5px; }
+.sheethead { text-align:center; margin-bottom:5mm; }
+.sheethead h1 { font-family:Georgia,'Noto Serif',serif; font-size:21pt; color:#0b3d2e; }
+.sheethead p { font-size:9.5pt; color:#5b6b62; margin-top:1.5mm; }
+.padded { padding:11mm 10mm 12mm; }
+
+.letter { position:absolute; left:8mm; right:8mm; top:8mm; bottom:8mm; border:.55mm solid #0b3d2e; border-radius:3mm; padding:9mm 11mm; }
+.letter::before { content:""; position:absolute; inset:2.2mm; border:.25mm solid #e3b341; border-radius:2.2mm; pointer-events:none; }
+.letter h1 { font-family:Georgia,'Noto Serif',serif; text-align:center; font-size:20pt; color:#991b1b; }
+.letter .from { text-align:center; font-size:9pt; letter-spacing:2.4px; color:#b8860b; text-transform:uppercase; margin-bottom:2mm; }
+.letter p { font-family:Georgia,'Noto Serif',serif; font-size:12pt; line-height:1.85; margin-bottom:4.5mm; }
+.letter .blank { display:inline-block; border-bottom:.35mm dotted #9db09f; min-width:38mm; height:5.4mm; }
+.letter .blank.wide { min-width:70mm; }
+.letter .rule { border-bottom:.32mm dotted #c4bda8; height:7.4mm; }
+.letter .sig { font-family:Georgia,'Noto Serif',serif; font-style:italic; font-size:19pt; color:#991b1b; margin-top:2mm; }
+.letter .ps { font-size:10.5pt; font-style:italic; color:#5b6b62; }
+.seal { position:absolute; right:12mm; bottom:14mm; width:30mm; height:30mm; border-radius:50%; border:.7mm double #b8860b; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#991b1b; transform:rotate(-9deg); background:rgba(253,240,201,.5); }
+.seal b { font-size:9.5pt; letter-spacing:.6px; } .seal span { font-size:7pt; letter-spacing:1.2px; }
+.np-head { display:flex; align-items:center; justify-content:center; gap:4mm; margin-bottom:4mm; }
+.q { font-family:Georgia,'Noto Serif',serif; font-size:11.5pt; margin:4mm 0 1.4mm; color:#0b3d2e; }
+
+.qband { background:#0b3d2e; border-radius:4mm; padding:6mm 8mm; text-align:center; margin-bottom:6mm; }
+.qband h1 { font-family:Georgia,'Noto Serif',serif; color:#f0c75e; font-size:22pt; }
+.qband p { color:#fff9f0; font-size:9.5pt; margin-top:1.6mm; }
+.qmeta { display:flex; gap:8mm; font-size:10.5pt; margin-bottom:5mm; }
+.qmeta .fill { flex:1; border-bottom:.35mm dotted #9db09f; height:5mm; }
+.qmeta .score { width:30mm; border-bottom:.35mm dotted #9db09f; height:5mm; }
+.qitem { margin-bottom:4.6mm; }
+.qitem .qq { font-size:11pt; }
+.qitem .qq b { color:#b91c1c; }
+.qitem .aline { border-bottom:.32mm dotted #9db09f; height:5.6mm; margin-top:1mm; }
+.kitem { margin-bottom:4.2mm; font-size:10.5pt; }
+.kitem b { color:#0b3d2e; }
+.kitem .num { color:#b91c1c; font-weight:700; }
+.kitem .fact { display:block; font-size:9pt; color:#5b6b62; font-style:italic; margin-top:.6mm; }
+
+.enotes { display:grid; grid-template-columns:1fr 1fr; gap:3.4mm; }
+.enote { height:60mm; border:.32mm dashed #aebbae; border-radius:2.6mm; padding:3.6mm 4.4mm; position:relative; overflow:hidden; }
+.enote .eday { position:absolute; top:2.6mm; right:3.2mm; font-size:7pt; letter-spacing:1.2px; color:#b8860b; font-weight:700; }
+.enote .ehead { font-size:8pt; letter-spacing:1.6px; color:#991b1b; text-transform:uppercase; font-weight:700; margin-bottom:2.2mm; }
+.enote .ebody { font-family:Georgia,'Noto Serif',serif; font-size:10.5pt; line-height:1.55; }
+.enote .esign { position:absolute; bottom:3mm; right:4.4mm; font-family:Georgia,'Noto Serif',serif; font-style:italic; font-size:9.5pt; color:#14634a; }
+.rrow { display:flex; align-items:center; gap:4mm; margin-bottom:4.6mm; }
+.rrow .rlabel { width:44mm; font-size:11pt; font-weight:600; }
+.rrow .rstars { font-size:15pt; letter-spacing:3px; color:#b8860b; }
+.rrow .rline { flex:1; border-bottom:.32mm dotted #9db09f; height:5mm; }
+.adv { display:grid; grid-template-columns:1fr 1fr; gap:3mm; }
+.acard { height:81mm; border:.32mm dashed #aebbae; border-radius:3mm; padding:4mm 5mm; position:relative; overflow:hidden; }
+.acard .ahead { display:flex; align-items:center; gap:3.4mm; margin-bottom:2.6mm; }
+.acard .aday { background:#b91c1c; color:#fff9f0; font-family:Georgia,'Noto Serif',serif; font-weight:700; font-size:15pt; width:12.5mm; height:12.5mm; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.acard .adate { font-size:7.5pt; letter-spacing:1.6px; color:#b8860b; font-weight:700; text-transform:uppercase; }
+.acard .aemoji { margin-left:auto; font-size:19pt; }
+.acard h3 { font-family:Georgia,'Noto Serif',serif; font-size:13pt; color:#0b3d2e; margin-bottom:1.8mm; }
+.acard p { font-size:10pt; line-height:1.55; color:#22302a; }
+.acard .adone { position:absolute; bottom:3.4mm; right:4.6mm; font-size:8.5pt; color:#b8860b; font-weight:600; }
+.acard.diy h3 { color:#991b1b; }
+.acard .rule { border-bottom:.32mm dotted #c4bda8; height:7mm; }
+.cert-wrap { text-align:center; padding-top:6mm; }
+.cert-wrap h1 { font-family:Georgia,'Noto Serif',serif; font-size:27pt; color:#0b3d2e; }
+.cert-name { border-bottom:.5mm solid #b8860b; height:13mm; margin:4mm 14mm 2mm; }
+.cert-sigs { display:flex; justify-content:space-between; margin-top:12mm; padding:0 6mm; }
+.cert-sigs .sig2 { width:62mm; text-align:center; }
+.cert-sigs .sline { border-bottom:.35mm dotted #9db09f; height:8mm; font-family:Georgia,'Noto Serif',serif; font-style:italic; font-size:13pt; color:#991b1b; }
+.cert-sigs .slabel { font-size:8pt; letter-spacing:1.6px; color:#5b6b62; text-transform:uppercase; margin-top:1.6mm; }
+.seal2 { width:32mm; height:32mm; border-radius:50%; border:.8mm double #b8860b; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#991b1b; background:rgba(253,240,201,.55); margin:7mm auto 0; transform:rotate(-7deg); }
+.seal2 b { font-size:10pt; letter-spacing:.6px; } .seal2 span { font-size:7pt; letter-spacing:1.2px; }
+.ssq-row { display:flex; align-items:flex-end; gap:3mm; margin-bottom:4.4mm; font-size:10.5pt; }
+.ssq-row .lab { font-weight:600; color:#0b3d2e; white-space:nowrap; }
+.ssq-row .fill { flex:1; border-bottom:.32mm dotted #9db09f; height:5.4mm; }
+.ssq-note { font-size:9pt; color:#5b6b62; font-style:italic; margin:-2mm 0 3.6mm; }
+</style></head><body><div class="page"><div class="letter">
+      <div class="from">✦ North Pole — Elf Department ✦</div>
+      <h1>Your Elf Has Arrived!</h1>
+      <p style="margin-top:5mm">Dear <span class="blank"></span> family,</p>
+      <p>Surprise! I've come all the way from the North Pole — and I brought my best behaviour, my
+      pointiest ears and only a <i>little</i> bit of mischief. Santa picked me specially for your family,
+      and I'll be staying from today until Christmas Eve, when I fly back to report in person.</p>
+      <p>My name is <span class="blank"></span> — though if you'd like to give me a
+      magic name of your own, I answer to most things. (Especially silly ones.)</p>
+      <p><b>Three very important elf rules:</b></p>
+      <p style="line-height:1.7">1. Please don't touch me during the day — cuddles make my magic wobbly.
+      (Grown-ups may rescue me with kitchen tongs in a true emergency.)<br>
+      2. Talk to me! Tell me everything. I remember it all, and every night I whisper it to Santa.<br>
+      3. Kindness is my favourite snack. Feed me often.</p>
+      <p>Every morning I'll be hiding somewhere new. Finding me is your first job of the day —
+      before breakfast, if you can manage it. Good luck!</p>
+      <p style="margin-bottom:1mm">Your new (very small) friend,</p>
+      <div class="sig" style="color:#14634a">Your Scout Elf</div>
+      <p class="ps">P.S. Official Scout Elf, Badge No. 24. Yes, the badge is tiny. So am I.</p>
+      <div class="sheetfoot" style="bottom:-6.5mm">Made with MerryHub • merryhub.vercel.app</div>
+    </div></div><div class="page"><div class="letter">
+      <div class="from">✦ North Pole — Elf Department ✦</div>
+      <h1>A Goodbye (For Now)</h1>
+      <p style="margin-top:5mm">Dear <span class="blank"></span>,</p>
+      <p>Well, here we are — Christmas Day! Last night I hitched a ride on the sleigh, helped with
+      the deliveries (I held the list; very important job), and now it's time for me to head home
+      to the North Pole for a well-earned rest and roughly forty hot chocolates.</p>
+      <p>What a December we had. I will never forget the time you</p>
+      <div class="rule"></div><div class="rule" style="margin-bottom:4.5mm"></div>
+      <p>— and Santa was so proud when I told him about</p>
+      <div class="rule"></div><div class="rule" style="margin-bottom:4.5mm"></div>
+      <p>You have been officially wonderful. Keep being kind, keep being curious, and keep an eye
+      on the Nice List — I have a very good feeling about your name staying right at the top.</p>
+      <p>I'll be back on the first of December next year, in a brand-new hiding place. You'll
+      never find me. (You probably will. You're annoyingly good at it.)</p>
+      <p style="margin-bottom:1mm">All my love and a pocketful of snow,</p>
+      <div class="sig" style="color:#14634a">Your Scout Elf</div>
+      <p class="ps">P.S. If you find glitter in odd places until about March… that was me. Sorry. (Not sorry.)</p>
+      <div class="sheetfoot" style="bottom:-6.5mm">Made with MerryHub • merryhub.vercel.app</div>
+    </div></div><div class="page padded"><div class="sheethead"><h1>🧝 Daily Elf Notes</h1><p>Sheet 1 of 3 — notes 1–8 • Cut along the dashed lines. One note per morning, left with the elf — 24 notes, one for every day of the visit.</p></div><div class="enotes"><div class="enote"><div class="eday">NOTE 1 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Good morning! I told Santa you were kind yesterday. He did a little happy dance.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 2 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Mission of the day: make someone smile before breakfast is over.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 3 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Why did the elf sit on the clock? To be ON TIME for Christmas! (Sorry. Elf jokes are like that.)</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 4 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">I counted your good deeds last night. I ran out of fingers AND toes.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 5 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Psst — tidy-up race today. Can you beat yesterday's time?</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 6 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Santa asked me to check on the Nice List situation. My report says: YES, still on it.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 7 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">I hid an extra smile somewhere in this room. It's yours now — pass it on.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 8 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Why do elves make such good listeners? We're all ears. (Pointy ones.)</div><div class="esign">— your elf</div></div></div><div class="sheetfoot">Made with MerryHub • merryhub.vercel.app</div></div><div class="page padded"><div class="sheethead"><h1>🧝 Daily Elf Notes</h1><p>Sheet 2 of 3 — notes 9–16 • Cut along the dashed lines. One note per morning, left with the elf — 24 notes, one for every day of the visit.</p></div><div class="enotes"><div class="enote"><div class="eday">NOTE 9 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Mission: draw a picture for someone and leave it where they'll find it.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 10 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">You shared so nicely yesterday. Even the reindeer were impressed.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 11 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Grown-ups work very hard at Christmas. Today's mission: one enormous thank-you.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 12 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">I tried to wrap myself as a present. The sticky tape won. Send help. (And biscuits.)</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 13 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Halfway to Christmas! Santa says you're doing brilliantly. I agree with Santa.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 14 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Mission: read a story out loud — bonus points for very silly voices.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 15 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Your kindness is my favourite thing to report. Please keep it coming.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 16 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Why did the snowman call his dog Frost? Because Frost bites! (I'm here all month.)</div><div class="esign">— your elf</div></div></div><div class="sheetfoot">Made with MerryHub • merryhub.vercel.app</div></div><div class="page padded"><div class="sheethead"><h1>🧝 Daily Elf Notes</h1><p>Sheet 3 of 3 — notes 17–24 • Cut along the dashed lines. One note per morning, left with the elf — 24 notes, one for every day of the visit.</p></div><div class="enotes"><div class="enote"><div class="eday">NOTE 17 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Mission: help with one Christmas job without being asked first.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 18 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">I guarded your dreams all night. Verdict: excellent dreams. Five stars.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 19 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Not many sleeps to go now — I've lost count. Excitement does that to an elf.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 20 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Mission: write down one thing you're thankful for and stick it on the fridge.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 21 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Santa polished the sleigh today. Your name got an extra sparkle on the list.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 22 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Why are elves such good singers? Perfect pointy pitch. Obviously.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 23 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">Nearly Christmas Eve! Tomorrow's mission: an early night. Big day coming.</div><div class="esign">— your elf</div></div><div class="enote"><div class="eday">NOTE 24 / 24</div><div class="ehead">🧝 A note from your elf</div><div class="ebody">My last note of the year — thank you for the best December ever. See you next year!</div><div class="esign">— your elf</div></div></div><div class="sheetfoot">Made with MerryHub • merryhub.vercel.app</div></div><div class="page padded">
+      <div class="qband"><h1>📋 Official Elf Report Card</h1>
+      <p>Filled in by your Scout Elf and reported directly to Santa. Colour in the stars!</p></div>
+      <div class="qmeta"><span>Child's name</span><span class="fill"></span><span>Reporting elf</span><span class="fill"></span></div>
+      <div class="rrow"><span class="rlabel">Kindness</span><span class="rstars">☆ ☆ ☆ ☆ ☆</span><span class="rline"></span></div><div class="rrow"><span class="rlabel">Listening</span><span class="rstars">☆ ☆ ☆ ☆ ☆</span><span class="rline"></span></div><div class="rrow"><span class="rlabel">Sharing</span><span class="rstars">☆ ☆ ☆ ☆ ☆</span><span class="rline"></span></div><div class="rrow"><span class="rlabel">A tidy bedroom</span><span class="rstars">☆ ☆ ☆ ☆ ☆</span><span class="rline"></span></div><div class="rrow"><span class="rlabel">Bedtime behaviour</span><span class="rstars">☆ ☆ ☆ ☆ ☆</span><span class="rline"></span></div><div class="rrow"><span class="rlabel">Giggles & good cheer</span><span class="rstars">☆ ☆ ☆ ☆ ☆</span><span class="rline"></span></div>
+      <p class="q" style="font-family:Georgia,'Noto Serif',serif;font-size:11.5pt;color:#0b3d2e;margin:5mm 0 1.6mm">Elf's final comments:</p>
+      <div class="rule" style="border-bottom:.32mm dotted #c4bda8;height:7.4mm"></div>
+      <div class="rule" style="border-bottom:.32mm dotted #c4bda8;height:7.4mm"></div>
+      <div class="rule" style="border-bottom:.32mm dotted #c4bda8;height:7.4mm;margin-bottom:6mm"></div>
+      <div style="display:flex;align-items:center;gap:8mm">
+        <div style="flex:1;font-family:Georgia,'Noto Serif',serif;font-size:13pt">Reported to Santa: <b style="color:#991b1b">YES ✓ — Nice List confirmed</b></div>
+        <div class="seal2" style="margin:0"><span>★ NORTH POLE ★</span><b>ELF DEPT</b><span>APPROVED</span></div>
+      </div>
+      <div class="sheetfoot">Made with MerryHub • merryhub.vercel.app</div></div></body></html>
