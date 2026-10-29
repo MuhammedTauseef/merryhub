@@ -10,9 +10,9 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = pageMetadata({
   path: "/countdown",
-  title: "Christmas Countdown 2026 — How Many Days Until Christmas?",
+  title: "Christmas Countdown 2026 — Days Until Christmas",
   description:
-    "Live Christmas countdown: exactly how many days, hours, minutes and seconds until Christmas Day, 25 December 2026. Plus Christmas Eve, Boxing Day and New Year dates.",
+    "Live Christmas countdown: how many days, hours, minutes and seconds until Christmas Day, 25 December 2026. Plus Christmas Eve, Boxing Day and New Year dates.",
   ogDescription:
     "Watch the live countdown to Christmas Day — days, hours, minutes and seconds to go.",
 });
