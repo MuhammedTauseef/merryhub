@@ -28,6 +28,9 @@ const SITE_SCHEMA = [
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  verification: {
+    google: "jXx7jWarPskM3UN7e2YihwpzUjZAzKJim_fvKRz-kw8",
+  },
   title: {
     default: `${SITE_NAME} — ${SITE_TAGLINE}`,
     template: `%s | ${SITE_NAME}`,
