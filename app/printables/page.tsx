@@ -67,8 +67,8 @@ export default function PrintablesPage() {
           <h1>Printable Christmas Cards & Games</h1>
           <p>
             The MerryHub Printable Pack is finished: 55 print-ready A4 pages of cards, tags,
-            games and North Pole paperwork — now with an Editable Premium edition, launching
-            here for $2. A free sample is ready below, right now.
+            games and North Pole paperwork — plus the Editable Premium edition, on sale here
+            for $2. A free sample is ready below, right now.
           </p>
         </div>
       </section>
@@ -140,18 +140,23 @@ export default function PrintablesPage() {
             <div style={{ fontSize: "2.6rem" }} aria-hidden="true">
               🛍️
             </div>
-            <h2>The full pack — coming soon</h2>
+            <h2>The full pack — $2</h2>
             <p>
-              Every file is finished and test-printed; we're just setting up the shop. When it
-              launches, this is exactly where you'll get all 55 pages:
+              Both editions, one small price: the complete 55-page print-and-play pack AND the
+              Editable Premium edition with 70 type-in name fields. Pay once, download
+              instantly, print as many copies as your Christmas needs.
             </p>
-            {/* SALES SLOT: the buy button / shop link for the printable pack goes here at launch. Sales channel to be decided — placeholder only, no link yet. */}
-            <button type="button" className="btn btn-red" disabled aria-disabled="true">
-              Get the Printable Pack — coming soon
-            </button>
+            <a
+              className="btn btn-red"
+              href="https://whop.com/merryhub/merryhub-christmas-printable-pack-editable-print-and-play-55-pages-editab/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get the Full Pack — $2
+            </a>
             <p className="hint mt-24">
-              No email sign-ups, no pre-orders — just check back here when you're doing your
-              Christmas prep.
+              Secure checkout by Whop • Both PDFs are delivered to you right after payment •
+              Personal use • Print at home on A4 or US Letter.
             </p>
           </div>
 
