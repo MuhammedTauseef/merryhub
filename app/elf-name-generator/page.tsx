@@ -8,9 +8,9 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = pageMetadata({
   path: "/elf-name-generator",
-  title: "Elf Name Generator — What's Your Christmas Elf Name?",
+  title: "Elf Name Generator — What's Your Elf Name?",
   description:
-    "Find your official North Pole elf name from your name and birth month — free, instant and very silly. Share it with friends and compare jobs at Santa's workshop.",
+    "Find your official North Pole elf name from your name and birth month — free, instant and silly. Share it with friends and compare jobs at Santa's workshop.",
   ogDescription: "Type your name, pick your birth month, meet your elf self. Free and instant.",
 });
 
