@@ -1,6 +1,7 @@
 export const SITE_NAME = "MerryHub";
 export const SITE_TAGLINE = "Christmas Countdown, Wishes & Card Maker";
 export const SITE_URL = "https://merryhub.vercel.app";
+export const GA_MEASUREMENT_ID = "G-B608TWME0Z";
 export const SITE_DESCRIPTION =
   "Make a Christmas card in seconds and share it anywhere — find wishes in three languages, discover your elf name, play the quiz and watch the live countdown.";
 
