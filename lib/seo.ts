@@ -9,6 +9,9 @@ interface PageMetaInput {
   description: string;
   ogTitle?: string;
   ogDescription?: string;
+  /** Optional share image URL. When omitted, the site-wide default
+   *  (app/opengraph-image) is used, exactly as before. */
+  image?: string;
   /** When true, `title` is used verbatim (no "| MerryHub" suffix). */
   absoluteTitle?: boolean;
 }
@@ -24,6 +27,7 @@ export function pageMetadata({
   description,
   ogTitle,
   ogDescription,
+  image,
   absoluteTitle,
 }: PageMetaInput): Metadata {
   const url = path === "/" ? SITE_URL : `${SITE_URL}${path}`;
@@ -37,11 +41,13 @@ export function pageMetadata({
       title: ogTitle ?? title,
       description: ogDescription ?? description,
       url,
+      ...(image ? { images: [{ url: image, alt: ogTitle ?? title }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle ?? title,
       description: ogDescription ?? description,
+      ...(image ? { images: [image] } : {}),
     },
   };
 }
