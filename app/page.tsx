@@ -21,7 +21,7 @@ const TOOLS = [
     href: "/wishes",
     icon: "✨",
     title: "Christmas Wishes Library",
-    text: "180 original wishes for family, friends, your boss, clients, teachers and kids — plus collections in Urdu, Hindi, Spanish and Tagalog.",
+    text: "Original wishes for family, friends, your boss, clients, teachers and kids — plus full collections in Spanish and Portuguese.",
     go: "Find a wish →",
   },
   {
