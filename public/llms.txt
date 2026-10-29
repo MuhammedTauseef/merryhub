@@ -1,0 +1,28 @@
+# MerryHub
+
+> MerryHub (https://merryhub.vercel.app) is a free Christmas website: a personalised Christmas card maker, a library of 180 original Christmas wishes in 15 collections, a live countdown to Christmas Day, an elf name generator, a 12-question Christmas quiz, and a printable Christmas pack with a free sample. Everything is free to use with no sign-up; the full printable pack will be sold from the printables page when its shop launches.
+
+## Free tools
+
+- Christmas Card Maker: https://merryhub.vercel.app/card-maker — Pick a design, add a name and a message, download the card as a picture and share it anywhere. Free, no sign-up.
+- Christmas Countdown: https://merryhub.vercel.app/countdown — Live days, hours, minutes and seconds until Christmas Day (25 December), with Christmas Eve, Boxing Day and New Year dates.
+- Elf Name Generator: https://merryhub.vercel.app/elf-name-generator — A deterministic elf name and North Pole job title from your name and birth month.
+- The Big Christmas Quiz: https://merryhub.vercel.app/christmas-quiz — 12 questions with an answer key; play on screen or print it.
+
+## Christmas wishes library
+
+180 original wishes across 15 collections at https://merryhub.vercel.app/wishes — for family, friends, boss, coworkers, clients and teachers; funny, short, romantic, religious and kids' collections; and collections in Urdu (Urdu script and Roman Urdu), Hindi, Spanish and Tagalog. Every wish can be copied or turned into a personalised card with the card maker.
+
+## Printables
+
+https://merryhub.vercel.app/printables — A 55-page print-ready A4 pack: 12 greeting cards, 24 gift tags, the quiz, an 11-game party bundle (including a Secret Santa questionnaire and 10 bingo cards), a letter from Santa, a letter to Santa, a Nice List certificate, an Elf Kit with 24 daily elf notes, 25 Advent activity cards and table place cards. A free 2-page sample (one card sheet + 12 gift tags) is downloadable now; the full pack goes on sale on that page when the shop launches.
+
+## Blog
+
+https://merryhub.vercel.app/blog — The MerryHub Christmas blog: seasonal guides, ideas and how-tos (what to write in a card, party games, printables and getting ready for Christmas Day). New guides are being published through the season; every article is original and researched.
+
+## About
+
+- About MerryHub: https://merryhub.vercel.app/about
+- Contact: https://merryhub.vercel.app/contact
+- Privacy policy: https://merryhub.vercel.app/privacy
