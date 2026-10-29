@@ -124,7 +124,7 @@ export default async function BlogPostPage({
             )}
           </article>
 
-          <Faq items={post.faqs} heading="Questions, answered" />
+          <Faq items={post.faqs} heading="Frequently asked questions" />
 
           {others.length > 0 && (
             <div className="mt-40">
