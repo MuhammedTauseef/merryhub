@@ -37,6 +37,7 @@ export async function generateMetadata({
     ogDescription: post.excerpt,
     // The post's cover image when it has one; otherwise the site default.
     image: post.heroImage || undefined,
+    ogType: "article",
   });
 }
 
@@ -57,6 +58,7 @@ export default async function BlogPostPage({
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
+    ...(post.heroImage ? { image: post.heroImage } : {}),
     inLanguage: "en",
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
@@ -137,7 +139,7 @@ export default async function BlogPostPage({
                     className="category-card blog-card"
                   >
                     {other.heroImage && (
-                      <img className="blog-card-img" src={other.heroImage} alt="" />
+                      <img className="blog-card-img" src={other.heroImage} alt={other.title} />
                     )}
                     <p className="blog-meta">
                       <span className="blog-tag">{other.category}</span>
