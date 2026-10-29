@@ -1,8 +1,11 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/posts";
 import { SITE_URL } from "@/lib/site";
 import { WISH_CATEGORIES } from "@/lib/wishes";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const staticRoutes: Array<{ path: string; priority: number; changeFrequency: "daily" | "weekly" | "monthly" }> = [
     { path: "/", priority: 1.0, changeFrequency: "daily" },
@@ -12,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/elf-name-generator", priority: 0.85, changeFrequency: "weekly" },
     { path: "/christmas-quiz", priority: 0.85, changeFrequency: "weekly" },
     { path: "/printables", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
     { path: "/about", priority: 0.4, changeFrequency: "monthly" },
     { path: "/contact", priority: 0.4, changeFrequency: "monthly" },
     { path: "/privacy", priority: 0.3, changeFrequency: "monthly" },
@@ -21,10 +25,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
     changeFrequency: "weekly" as const,
   }));
-  return [...staticRoutes, ...wishRoutes].map((r) => ({
-    url: `${SITE_URL}${r.path}`,
-    lastModified: now,
-    changeFrequency: r.changeFrequency,
-    priority: r.priority,
+  // Published blog posts from Supabase; empty when the blog is not
+  // configured yet (the /blog index above is always listed).
+  const postRoutes = (await getAllPosts()).map((p) => ({
+    url: `${SITE_URL}/blog/${p.slug}`,
+    lastModified: new Date(`${p.date}T00:00:00Z`),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
   }));
+  return [
+    ...[...staticRoutes, ...wishRoutes].map((r) => ({
+      url: `${SITE_URL}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.changeFrequency,
+      priority: r.priority,
+    })),
+    ...postRoutes,
+  ];
 }

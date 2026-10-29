@@ -1044,3 +1044,182 @@ h3 {
   text-align: center;
   color: var(--green-950);
 }
+
+/* ---------- blog ---------- */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.blog-card h2,
+.blog-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.18rem;
+  color: var(--green-950);
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.blog-meta-hero {
+  justify-content: center;
+}
+
+.blog-tag {
+  background: var(--green-900);
+  color: var(--cream);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.blog-read {
+  margin-top: 10px;
+  color: var(--red-600);
+  font-weight: 700;
+  font-size: 0.94rem;
+}
+
+/* Cover image at the top of an article (plain <img>, fluid width). */
+.blog-hero-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 0 0 20px;
+}
+
+/* Card thumbnail, stretched over the card's padding so it sits
+   edge-to-edge at the top of the card (card padding is 22px). */
+.blog-card-img {
+  display: block;
+  width: calc(100% + 44px);
+  max-width: none;
+  margin: -22px -22px 14px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* The 40–60 word direct-answer block near the top of every article (AEO). */
+.direct-answer {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 8px;
+}
+
+.direct-answer p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ---------- admin panel ---------- */
+
+.field input[type="email"],
+.field input[type="password"],
+.panel input[type="text"],
+.panel textarea,
+.panel select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #cfd8d1;
+  border-radius: 10px;
+  font: inherit;
+  background: #fff;
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+.field input[type="email"]:focus,
+.field input[type="password"]:focus,
+.panel input[type="text"]:focus,
+.panel textarea:focus,
+.panel select:focus {
+  outline: 3px solid rgba(227, 179, 65, 0.5);
+  border-color: var(--gold-deep);
+}
+
+.admin-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Live preview of the chosen cover image in the post editor. */
+.admin-hero-preview {
+  display: block;
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.97rem;
+}
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.admin-table thead th {
+  background: var(--cream);
+  color: var(--green-950);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.status-pill {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-published {
+  background: var(--green-700);
+  color: #fff;
+}
+
+.status-draft {
+  background: var(--cream);
+  color: var(--gold-deep);
+  border: 1px solid var(--gold);
+}
