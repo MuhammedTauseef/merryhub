@@ -57,8 +57,8 @@ export default async function BlogIndexPage() {
                 <p>
                   The blog is brand new. We are writing the first seasonal guides now — what to
                   write in a Christmas card, how to run a Secret Santa everyone actually enjoys,
-                  making the most of the printable pack, and getting your wishes out in Urdu,
-                  Hindi, Spanish and Tagalog as well as English.
+                  making the most of the printable pack, and getting your wishes out in Spanish and
+                  Portuguese as well as English.
                 </p>
                 <p>
                   Every guide will be researched, original and written to be genuinely useful —
@@ -80,7 +80,7 @@ export default async function BlogIndexPage() {
                     🎄
                   </span>
                   <h3>Christmas Wishes Library</h3>
-                  <p>Original wishes for everyone on your list, in five languages — copy or card them.</p>
+                  <p>Original wishes for everyone on your list, in three languages — copy or card them.</p>
                   <span className="tool-go">Browse wishes →</span>
                 </Link>
                 <Link href="/printables" className="tool-card">
