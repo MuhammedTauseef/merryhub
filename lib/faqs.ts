@@ -47,23 +47,23 @@ export const WISHES_INDEX_FAQS: FaqItem[] = [
 export const PRINTABLES_FAQS: FaqItem[] = [
   {
     q: "Is the free printable sample really free?",
-    a: "Yes. The sample is a 2-page A4 PDF — one printable greeting card sheet and one sheet of 12 gift tags, both taken from the real pack. It downloads instantly with no email sign-up and no catch.",
+    a: "Yes. The sample is a 2-page A4 PDF — one printable greeting card sheet and one sheet of 12 gift tags, both taken from the Complete Christmas Bundle. It downloads instantly with no email sign-up and no catch.",
   },
   {
     q: "What do I need to print the pack?",
     a: "An ordinary home printer and A4 paper (Letter size works too). Cards print one per sheet and fold in half; tags, activity cards and place cards have light dashed cut guides. Colour looks best, but every sheet also works in greyscale.",
   },
   {
-    q: "What is in the full printable pack?",
-    a: "55 print-ready A4 pages: 12 greeting cards, 24 gift tags, the big Christmas quiz with its answer key, an 11-game party bundle (including 10 bingo cards and a Secret Santa questionnaire), a letter from Santa, a letter to Santa, a Nice List certificate, the Elf Kit with 24 daily elf notes, 25 Advent activity cards and table place cards.",
+    q: "What is in the Complete Christmas Bundle?",
+    a: "68 print-ready A4 pages: party games, an Elf Kit, Advent activity cards, greeting cards, gift tags and Santa letters — with an editable edition that adds 70 type-in name fields.",
   },
   {
-    q: "When can I buy the full pack?",
-    a: "Right now — the pack is finished and on sale. Use the Get the Full Pack button on this page: secure checkout by Whop, and both PDFs are delivered to you right after payment. There are no pre-orders and no email sign-ups.",
+    q: "When can I buy the Complete Christmas Bundle?",
+    a: "Right now — it is finished and on sale for $7. Use the buy button on this page: secure checkout by Whop, and the PDFs are delivered to you right after payment. Seventeen packs are available in total, from $2 to $7. There are no pre-orders and no email sign-ups.",
   },
   {
     q: "Can I print copies for my class or office?",
-    a: "The quiz, games and Advent cards are designed to be printed once per player or per day, so a teacher or party host can print the sheets their group needs from their own copy of the pack.",
+    a: "The quiz, games and Advent cards are designed to be printed once per player or per day, so a teacher or party host can print the sheets their group needs from their own copy of the bundle.",
   },
 ];
 
@@ -74,7 +74,7 @@ export const QUIZ_FAQS: FaqItem[] = [
   },
   {
     q: "Can I print the quiz?",
-    a: "Yes. Use the print button at the top of this page to print the questions (or save them as a PDF) with space to write answers, and the answer key prints at the end. A designed printable version is also part of the MerryHub printable pack.",
+    a: "Yes. Use the print button at the top of this page to print the questions (or save them as a PDF) with space to write answers, and the answer key prints at the end. A designed printable version is also in the Christmas Quiz Night Pack ($2) and the Christmas Games Bundle ($4).",
   },
   {
     q: "Is the quiz suitable for a classroom or office party?",
