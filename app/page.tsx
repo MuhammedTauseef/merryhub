@@ -132,8 +132,8 @@ export default function HomePage() {
         <div className="wrap">
           <h2>Printables for paper instead of pixels</h2>
           <p className="section-lede">
-            Two ways in: a free sample to try right now, and the full pack — every game,
-            card and letter in one download.
+            Two ways in: a free sample to try right now, and the Complete Christmas Bundle —
+            games, elf kit, Advent, cards, tags and Santa letters in one download.
           </p>
           <div className="tool-grid">
             <div className="tool-card">
@@ -149,11 +149,10 @@ export default function HomePage() {
             </div>
             <div className="tool-card">
               <span className="tool-icon" aria-hidden="true">🎁</span>
-              <h3>The full pack — $2</h3>
+              <h3>Complete Christmas Bundle — $7</h3>
               <p>
-                55 pages: 11 party games, cards, gift tags, Santa letters, a Nice List
-                certificate, an Elf Kit and Advent cards — PLUS the editable edition with
-                70 type-in name fields.
+                68 pages: party games, an Elf Kit, Advent activity cards, cards, gift tags
+                and Santa letters — PLUS the editable edition with 70 type-in name fields.
               </p>
               <a
                 href="https://whop.com/merryhub/merryhub-christmas-printable-pack-editable-print-and-play-55-pages-editab/"
@@ -161,13 +160,13 @@ export default function HomePage() {
                 rel="noreferrer"
                 className="tool-go"
               >
-                Get the Full Pack — $2 →
+                Get the Complete Christmas Bundle — $7 →
               </a>
             </div>
           </div>
           <div className="center mt-24">
             <Link href="/printables" className="btn btn-outline-dark">
-              See everything inside the pack
+              Browse all printables
             </Link>
           </div>
         </div>
@@ -181,7 +180,7 @@ export default function HomePage() {
               ? "And it's today — merry Christmas! Send that card now, while the day is still young."
               : `That's ${parts.days} day${parts.days === 1 ? "" : "s"} of anticipation to enjoy. However you celebrate — a big family table, a quiet evening, a video call across the miles — MerryHub is here to help you spread a little more joy on the way there.`}{" "}
             When you need paper instead of pixels, the{" "}
-            <Link href="/printables">printable pack</Link> is ready — with a free sample to
+            <Link href="/printables">Complete Christmas Bundle</Link> is ready — with a free sample to
             download right now.
           </p>
           <div className="hero-cta">
