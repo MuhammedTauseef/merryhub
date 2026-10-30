@@ -11,10 +11,10 @@ export const metadata: Metadata = pageMetadata({
   path: "/printables",
   title: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
   description:
-    "Seventeen printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available.",
+    "Eighteen printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available.",
   ogTitle: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
   ogDescription:
-    "Seventeen printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available right now.",
+    "Eighteen printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available right now.",
 });
 
 const PACK_CONTENTS = [
@@ -138,7 +138,7 @@ const PRODUCT_GROUPS = [
         text: "12 printable cards and 24 gift tags for any occasion.",
       },
       {
-        name: "Christmas Gift Coupons",
+        name: "Planners & Productivity Bundle", price: "$4", href: "https://whop.com/merryhub/planners-productivity-bundle-undated-daily-weekly-habit-goal-pages", text: "Undated daily, weekly, habit and goal pages, 28 A4 pages, editable in the PDF.", }, { name: "Christmas Gift Coupons",
         price: "$2",
         href: "https://whop.com/merryhub/products/christmas-gift-coupons-printable-16-coupons-4-blank-instant-download/",
         text: "16 printable gift coupons, plus 4 blank ones.",
@@ -194,7 +194,7 @@ export default function PrintablesPage() {
         <div className="wrap">
           <h1>Printables</h1>
           <p>
-            Seventeen printable packs, from $2 to $7 — led by the Complete Christmas Bundle
+            Eighteen printable packs, from $2 to $7 — led by the Complete Christmas Bundle
             at $7. Buy once, download instantly, print as many copies as you need. A free
             sample is ready below, right now.
           </p>
