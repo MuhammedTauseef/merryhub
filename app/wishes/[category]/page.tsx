@@ -5,6 +5,7 @@ import Faq from "@/components/Faq";
 import WishCard from "@/components/WishCard";
 import { categoryFaqs } from "@/lib/faqs";
 import { pageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import { WISH_CATEGORIES, getCategory } from "@/lib/wishes";
 
 export const dynamic = "force-static";
@@ -38,6 +39,10 @@ export default async function WishCategoryPage({
   const cat = getCategory(category);
   if (!cat) notFound();
   const others = WISH_CATEGORIES.filter((c) => c.slug !== cat.slug);
+  const shareTitle = cat.title;
+  const shareUrl = `${SITE_URL}/wishes/${cat.slug}`;
+  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`;
+  const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
 
   return (
     <>
@@ -63,6 +68,18 @@ export default async function WishCategoryPage({
               <Link href="/card-maker">free Christmas card maker</Link> and choose your favourite
               design.
             </p>
+          </div>
+
+          <div className="prose mt-40 center">
+            <h2>Share these wishes</h2>
+            <div className="share-row">
+              <a className="share-btn share-whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                Share on WhatsApp
+              </a>
+              <a className="share-btn share-facebook" href={facebookHref} target="_blank" rel="noopener noreferrer">
+                Share on Facebook
+              </a>
+            </div>
           </div>
 
           <Faq items={categoryFaqs(cat)} />
