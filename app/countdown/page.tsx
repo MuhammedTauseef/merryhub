@@ -5,6 +5,7 @@ import Faq, { type FaqItem } from "@/components/Faq";
 import Snowfall from "@/components/Snowfall";
 import { getCountdownParts, longDate } from "@/lib/dates";
 import { pageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -25,6 +26,10 @@ export default function CountdownPage() {
   const newYear = new Date(y + 1, 0, 1);
   const weeks = Math.floor(parts.days / 7);
   const sleeps = parts.isChristmasDay ? 0 : parts.days;
+  const shareTitle = "Christmas Countdown 2026 — Days Until Christmas";
+  const shareUrl = `${SITE_URL}/countdown`;
+  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`;
+  const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
 
   const faqs: FaqItem[] = [
     {
@@ -130,6 +135,18 @@ export default function CountdownPage() {
               <Link href="/elf-name-generator">elf name</Link> and challenge the whole family to
               find theirs? The days fly by faster when you are spreading joy.
             </p>
+          </div>
+
+          <div className="prose mt-40 center">
+            <h2>Share the countdown</h2>
+            <div className="share-row">
+              <a className="share-btn share-whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                Share on WhatsApp
+              </a>
+              <a className="share-btn share-facebook" href={facebookHref} target="_blank" rel="noopener noreferrer">
+                Share on Facebook
+              </a>
+            </div>
           </div>
         </div>
       </section>
