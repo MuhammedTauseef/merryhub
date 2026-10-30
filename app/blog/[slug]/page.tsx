@@ -51,6 +51,10 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const url = `${SITE_URL}/blog/${post.slug}`;
+  const shareTitle = post.title;
+  const shareUrl = url;
+  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`;
+  const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -122,6 +126,18 @@ export default async function BlogPostPage({
                 </ul>
               </>
             )}
+
+            <div className="mt-40 center">
+              <h2>Share this post</h2>
+              <div className="share-row">
+                <a className="share-btn share-whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                  Share on WhatsApp
+                </a>
+                <a className="share-btn share-facebook" href={facebookHref} target="_blank" rel="noopener noreferrer">
+                  Share on Facebook
+                </a>
+              </div>
+            </div>
           </article>
 
           <Faq items={post.faqs} heading="Frequently asked questions" />
