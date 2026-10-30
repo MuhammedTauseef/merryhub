@@ -11,10 +11,10 @@ export const metadata: Metadata = pageMetadata({
   path: "/printables",
   title: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
   description:
-    "Eighteen printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available.",
+    "Twenty printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available.",
   ogTitle: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
   ogDescription:
-    "Eighteen printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available right now.",
+    "Twenty printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available right now.",
 });
 
 const PACK_CONTENTS = [
