@@ -3,6 +3,7 @@ import ElfNameGenerator from "@/components/ElfNameGenerator";
 import Faq from "@/components/Faq";
 import { ELF_FAQS } from "@/lib/faqs";
 import { pageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -15,6 +16,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function ElfNameGeneratorPage() {
+  const shareTitle = "Elf Name Generator — What's Your Elf Name?";
+  const shareUrl = `${SITE_URL}/elf-name-generator`;
+  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`;
+  const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
   return (
     <>
       <section className="page-hero">
@@ -41,9 +46,20 @@ export default function ElfNameGeneratorPage() {
             <h2>Things to do with your elf name</h2>
             <p>
               Use it on place cards at the Christmas table, sign your cards with it, label gift
-              tags “from your favourite elf”, or make it the theme of this year's family photo.
+              tags "from your favourite elf", or make it the theme of this year's family photo.
               Share your result and challenge your friends to find theirs — the elves insist.
             </p>
+          </div>
+          <div className="prose mt-40 center">
+            <h2>Share the elf name generator</h2>
+            <div className="share-row">
+              <a className="share-btn share-whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                Share on WhatsApp
+              </a>
+              <a className="share-btn share-facebook" href={facebookHref} target="_blank" rel="noopener noreferrer">
+                Share on Facebook
+              </a>
+            </div>
           </div>
           <Faq items={ELF_FAQS} heading="Elf name questions" />
         </div>
