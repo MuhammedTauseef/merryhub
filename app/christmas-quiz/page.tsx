@@ -4,6 +4,7 @@ import Faq from "@/components/Faq";
 import PrintButton from "@/components/PrintButton";
 import { QUIZ_FAQS } from "@/lib/faqs";
 import { pageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 import { QUIZ_QUESTIONS } from "@/lib/quiz";
 
 export const dynamic = "force-static";
@@ -19,6 +20,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function ChristmasQuizPage() {
+  const shareTitle = "The Big Christmas Quiz — Printable, with Answers";
+  const shareUrl = `${SITE_URL}/christmas-quiz`;
+  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`;
+  const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
   return (
     <>
       <section className="page-hero no-print">
@@ -92,6 +97,18 @@ export default function ChristmasQuizPage() {
               <Link href="/elf-name-generator">elf name</Link> for next year's teams, or browse{" "}
               <Link href="/wishes">Christmas wishes</Link> for the card you still haven't written.
             </p>
+          </div>
+
+          <div className="prose mt-40 no-print center">
+            <h2>Share the quiz</h2>
+            <div className="share-row">
+              <a className="share-btn share-whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                Share on WhatsApp
+              </a>
+              <a className="share-btn share-facebook" href={facebookHref} target="_blank" rel="noopener noreferrer">
+                Share on Facebook
+              </a>
+            </div>
           </div>
         </div>
       </section>
