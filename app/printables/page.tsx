@@ -3,17 +3,18 @@ import Link from "next/link";
 import Faq from "@/components/Faq";
 import { PRINTABLES_FAQS } from "@/lib/faqs";
 import { pageMetadata } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = pageMetadata({
   path: "/printables",
-  title: "Printable Christmas Cards & Games — Free Sample",
+  title: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
   description:
-    "55 print-ready A4 pages: greeting cards, gift tags, a quiz, an 11-game bundle, Santa letters, an Elf Kit and Advent cards — plus a type-in edition. Free sample.",
-  ogTitle: "Printable Christmas Cards, Games & Elf Kit — Free Sample",
+    "Seventeen printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available.",
+  ogTitle: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
   ogDescription:
-    "55 pages of print-at-home Christmas joy: cards, tags, games, Santa letters, an Elf Kit and Advent activity cards — plus an editable edition for typed names. Free sample available right now.",
+    "Seventeen printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available right now.",
 });
 
 const PACK_CONTENTS = [
@@ -59,22 +60,198 @@ const PACK_CONTENTS = [
   },
 ];
 
+const PRODUCT_GROUPS = [
+  {
+    title: "Christmas Bundles",
+    intro: "Start here: the complete bundle, then the Christmas bundles for games, elves and cards.",
+    products: [
+      {
+        name: "Complete Christmas Bundle",
+        price: "$7",
+        href: "https://whop.com/merryhub/merryhub-christmas-printable-pack-editable-print-and-play-55-pages-editab/",
+        text: "★ Featured bundle — 68 pages: games, elf kit, Advent cards, cards, gift tags and Santa letters.",
+      },
+      {
+        name: "Christmas Games Bundle",
+        price: "$4",
+        href: "https://whop.com/merryhub/products/christmas-games-bundle-15-printable-party-games-quiz-25-pages/",
+        text: "15 printable party games and a quiz, 25 pages in total.",
+      },
+      {
+        name: "Elf on the Shelf Kit + Advent Bundle",
+        price: "$4",
+        href: "https://whop.com/merryhub/products/elf-on-the-shelf-kit-advent-activity-cards-bundle-printable-editable/",
+        text: "The full elf kit plus 25 Advent activity cards.",
+      },
+      {
+        name: "Cards, Gift Tags & Santa Letters Bundle",
+        price: "$3",
+        href: "https://whop.com/merryhub/products/christmas-cards-gift-tags-santa-letters-bundle-printable-editable/",
+        text: "Printable Christmas cards, gift tags and Santa letters.",
+      },
+    ],
+  },
+  {
+    title: "All-Year Printables",
+    intro: "Printables for birthdays, babies, planners and everyday occasions — not just Christmas.",
+    products: [
+      {
+        name: "Baby Shower Bundle",
+        price: "$4",
+        href: "https://whop.com/merryhub/products/baby-shower-printable-bundle-10-games-bingo-cards-tags-banner/",
+        text: "10 games, bingo cards, tags and a banner for a baby shower.",
+      },
+      {
+        name: "ADHD-Friendly Planner",
+        price: "$4",
+        href: "https://whop.com/merryhub/products/adhd-friendly-planner-for-adults-undated-printable-daily-weekly-reset/",
+        text: "Undated daily and weekly planner with reset pages for adults.",
+      },
+      {
+        name: "Birthday Party Bundle",
+        price: "$3",
+        href: "https://whop.com/merryhub/products/birthday-party-printable-bundle-games-bingo-cards-tags-banner/",
+        text: "Games, bingo cards, tags and a banner for a birthday party.",
+      },
+      {
+        name: "Kids Puzzle & Activity Pack",
+        price: "$3",
+        href: "https://whop.com/merryhub/products/kids-puzzle-activity-pack-printable-word-search-mazes-sudoku-ages-6-12/",
+        text: "Word searches, mazes and sudoku for ages 6–12.",
+      },
+      {
+        name: "2027 New Year Planner",
+        price: "$3",
+        href: "https://whop.com/merryhub/products/2027-new-year-planner-printable-goals-monthly-pages-january-weeks-a4/",
+        text: "Goals, monthly pages and January weeks for 2027, A4.",
+      },
+      {
+        name: "Christmas Wall Art Set",
+        price: "$3",
+        href: "https://whop.com/merryhub/products/christmas-wall-art-set-of-6-prints-printable-8x10-festive-typography-decor/",
+        text: "Set of 6 festive typography prints, 8×10.",
+      },
+      {
+        name: "All-Occasion Cards & Tags",
+        price: "$2",
+        href: "https://whop.com/merryhub/products/all-occasion-printable-cards-gift-tags-12-cards-24-tags/",
+        text: "12 printable cards and 24 gift tags for any occasion.",
+      },
+      {
+        name: "Christmas Gift Coupons",
+        price: "$2",
+        href: "https://whop.com/merryhub/products/christmas-gift-coupons-printable-16-coupons-4-blank-instant-download/",
+        text: "16 printable gift coupons, plus 4 blank ones.",
+      },
+    ],
+  },
+  {
+    title: "Small Packs — $2–$3",
+    intro: "Smaller packs for one job: elf notes, party games, Advent and quiz night.",
+    products: [
+      {
+        name: "Elf Notes & Letters Pack",
+        price: "$3",
+        href: "https://whop.com/merryhub/products/elf-notes-letters-pack-arrival-goodbye-24-notes-report-card/",
+        text: "Arrival and goodbye letters, 24 notes and a report card.",
+      },
+      {
+        name: "Party Games Mini-Pack",
+        price: "$3",
+        href: "https://whop.com/merryhub/products/christmas-party-games-mini-pack-10-printable-games-answer-keys/",
+        text: "10 printable party games with answer keys.",
+      },
+      {
+        name: "Advent Activity Cards",
+        price: "$2",
+        href: "https://whop.com/merryhub/products/advent-activity-cards-25-printable-cards-for-1-25-december/",
+        text: "25 printable cards for 1–25 December.",
+      },
+      {
+        name: "Gift Tags & Santa Letters Set",
+        price: "$2",
+        href: "https://whop.com/merryhub/products/gift-tags-santa-letters-set-24-tags-letters-editable/",
+        text: "24 gift tags and Santa letters, editable.",
+      },
+      {
+        name: "Christmas Quiz Night Pack",
+        price: "$2",
+        href: "https://whop.com/merryhub/products/christmas-quiz-night-pack-big-quiz-trivia-carols-keys/",
+        text: "Big quiz, trivia and carols with answer keys.",
+      },
+    ],
+  },
+];
+
 export default function PrintablesPage() {
+  const shareTitle = "Printables — Christmas Bundles, All-Year Packs & Small Packs";
+  const shareUrl = `${SITE_URL}/printables`;
+  const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`;
+  const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
   return (
     <>
       <section className="page-hero">
         <div className="wrap">
-          <h1>Printable Christmas Cards & Games</h1>
+          <h1>Printables</h1>
           <p>
-            The MerryHub Printable Pack is finished: 55 print-ready A4 pages of cards, tags,
-            games and North Pole paperwork — plus the Editable Premium edition, on sale here
-            for $2. A free sample is ready below, right now.
+            Seventeen printable packs, from $2 to $7 — led by the Complete Christmas Bundle
+            at $7. Buy once, download instantly, print as many copies as you need. A free
+            sample is ready below, right now.
           </p>
         </div>
       </section>
       <section className="page-body">
         <div className="wrap">
-          <h2 style={{ textAlign: "center" }}>What's inside the pack</h2>
+          {PRODUCT_GROUPS.map((group) => (
+            <div key={group.title} className="mt-40">
+              <h2 style={{ textAlign: "center" }}>{group.title}</h2>
+              <p className="section-lede" style={{ textAlign: "center", color: "var(--muted)", maxWidth: 620, margin: "0 auto 30px" }}>
+                {group.intro}
+              </p>
+              <div className="tool-grid">
+                {group.products.map((product) => (
+                  <div className="tool-card" key={product.name}>
+                    <h3>{product.name} — {product.price}</h3>
+                    <p>{product.text}</p>
+                    <a
+                      className="btn btn-red"
+                      href={product.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buy — {product.price} →
+                    </a>
+                    <p className="hint mt-24">
+                      Secure checkout by Whop • Personal use • Print at home on A4 or US Letter.
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div className="coming-soon mt-40">
+            <div style={{ fontSize: "2.6rem" }} aria-hidden="true">
+              🎁
+            </div>
+            <h2>Try the free sample</h2>
+            <p>
+              Two real pages from the Complete Christmas Bundle, free: the Midnight Pines card
+              sheet (print it, fold it, write in it) and the first sheet of 12 gift tags.
+            </p>
+            <a
+              className="btn btn-gold"
+              href="/printables/merryhub-printables-sample.pdf"
+              download
+            >
+              Download the free sample (PDF)
+            </a>
+            <p className="hint mt-24">
+              PDF • 2 A4 pages • 334 KB • No email sign-up, no catch.
+            </p>
+          </div>
+
+          <h2 style={{ textAlign: "center" }} className="mt-40">What&apos;s inside the Complete Christmas Bundle</h2>
           <p className="section-lede" style={{ textAlign: "center", color: "var(--muted)", maxWidth: 620, margin: "0 auto 30px" }}>
             One purchase, print as many copies as your Christmas needs. No shipping, no waiting —
             just download, print and cut.
@@ -97,7 +274,7 @@ export default function PrintablesPage() {
             </div>
             <h2>New: the Editable Premium edition</h2>
             <p>
-              Every pack now includes a second, editable copy of the name-it items — 13 pages
+              The Complete Christmas Bundle includes a second, editable copy of the name-it items — 13 pages
               with 70 fillable fields. Open the PDF, type the names, then print: no handwriting
               to redo, no spelling mistakes on the big night.
             </p>
@@ -114,52 +291,6 @@ export default function PrintablesPage() {
             </p>
           </div>
 
-          <div className="coming-soon mt-40">
-            <div style={{ fontSize: "2.6rem" }} aria-hidden="true">
-              🎁
-            </div>
-            <h2>Try the free sample</h2>
-            <p>
-              Two real pages from the pack, free: the Midnight Pines card sheet (print it, fold
-              it, write in it) and the first sheet of 12 gift tags. If your printer likes these,
-              it will love the other 53 pages.
-            </p>
-            <a
-              className="btn btn-gold"
-              href="/printables/merryhub-printables-sample.pdf"
-              download
-            >
-              Download the free sample (PDF)
-            </a>
-            <p className="hint mt-24">
-              PDF • 2 A4 pages • 334 KB • No email sign-up, no catch.
-            </p>
-          </div>
-
-          <div className="coming-soon mt-40">
-            <div style={{ fontSize: "2.6rem" }} aria-hidden="true">
-              🛍️
-            </div>
-            <h2>The full pack — $2</h2>
-            <p>
-              Both editions, one small price: the complete 55-page print-and-play pack AND the
-              Editable Premium edition with 70 type-in name fields. Pay once, download
-              instantly, print as many copies as your Christmas needs.
-            </p>
-            <a
-              className="btn btn-red"
-              href="https://whop.com/merryhub/merryhub-christmas-printable-pack-editable-print-and-play-55-pages-editab/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Get the Full Pack — $2
-            </a>
-            <p className="hint mt-24">
-              Secure checkout by Whop • Both PDFs are delivered to you right after payment •
-              Personal use • Print at home on A4 or US Letter.
-            </p>
-          </div>
-
           <div className="prose mt-40">
             <h2>Free while you wait</h2>
             <p>
@@ -173,12 +304,24 @@ export default function PrintablesPage() {
               Printable files are PDFs designed for ordinary home printers on A4 or Letter paper.
               Cards print one per sheet and fold to a standard greeting-card size, tags and place
               cards have light cut guides, and everything is ink-friendly — festive, but not a
-              whole cartridge's worth of festive. Colour is lovely, but every sheet works in
+              whole cartridge&apos;s worth of festive. Colour is lovely, but every sheet works in
               greyscale too.
             </p>
           </div>
 
-          <Faq items={PRINTABLES_FAQS} heading="Printable pack questions" />
+          <div className="prose mt-40 center">
+            <h2>Share these printables</h2>
+            <div className="share-row">
+              <a className="share-btn share-whatsapp" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                Share on WhatsApp
+              </a>
+              <a className="share-btn share-facebook" href={facebookHref} target="_blank" rel="noopener noreferrer">
+                Share on Facebook
+              </a>
+            </div>
+          </div>
+
+          <Faq items={PRINTABLES_FAQS} heading="Printable packs questions" />
         </div>
       </section>
     </>
