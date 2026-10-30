@@ -141,7 +141,7 @@ const PRODUCT_GROUPS = [
         name: "Planners & Productivity Bundle", price: "$4", href: "https://whop.com/merryhub/planners-productivity-bundle-undated-daily-weekly-habit-goal-pages", text: "Undated daily, weekly, habit and goal pages, 28 A4 pages, editable in the PDF.", }, { name: "Christmas Gift Coupons",
         price: "$2",
         href: "https://whop.com/merryhub/products/christmas-gift-coupons-printable-16-coupons-4-blank-instant-download/",
-        text: "16 printable gift coupons, plus 4 blank ones.",
+        text: "16 printable gift coupons, plus 4 blank ones.", }, { name: "Budget & Finance Planner Bundle", price: "$4", href: "https://whop.com/merryhub/budget-finance-planner-bundle-monthly-budget-bills-savings-debt", text: "Monthly budget, bills, savings and debt pages — 28 A4 pages, editable in the PDF.",
       },
     ],
   },
@@ -194,7 +194,7 @@ export default function PrintablesPage() {
         <div className="wrap">
           <h1>Printables</h1>
           <p>
-            Eighteen printable packs, from $2 to $7 — led by the Complete Christmas Bundle
+            Nineteen printable packs, from $2 to $7 — led by the Complete Christmas Bundle
             at $7. Buy once, download instantly, print as many copies as you need. A free
             sample is ready below, right now.
           </p>
