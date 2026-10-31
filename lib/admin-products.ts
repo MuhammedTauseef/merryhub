@@ -16,6 +16,9 @@ export interface ProductInput {
   blurb: string;
   sort_order: number;
   visible: boolean;
+  /** Gallery image URLs in display order; element 1 is the cover.
+   *  Empty = the card renders with no image, exactly as before. */
+  image_urls: string[];
 }
 
 const str = (v: unknown) => (typeof v === "string" ? v.trim() : "");
@@ -30,6 +33,34 @@ function parsePriceToCents(body: Record<string, unknown>): number | null {
   const dollars = Number(raw);
   if (!Number.isFinite(dollars)) return null;
   return Math.round(dollars * 100);
+}
+
+/** Any https URL — gallery images live in the site's Supabase storage,
+ *  but the admin may paste any secure image link. */
+function isHttpsUrl(raw: string): boolean {
+  try {
+    return new URL(raw).protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+/** The gallery: an optional list of https image URLs, at most 6,
+ *  display order preserved, blanks dropped. */
+function parseImageUrls(body: Record<string, unknown>): string[] | { error: string } {
+  const raw = body.image_urls;
+  if (raw === undefined) return [];
+  if (!Array.isArray(raw)) return { error: "Gallery images must be a list of URLs." };
+  const urls = raw
+    .map((u) => (typeof u === "string" ? u.trim() : ""))
+    .filter((u) => u !== "");
+  if (urls.length > 6) return { error: "A gallery can hold at most 6 images." };
+  for (const u of urls) {
+    if (u.length > 1000 || !isHttpsUrl(u)) {
+      return { error: "Every gallery image must be an https:// URL." };
+    }
+  }
+  return urls;
 }
 
 /** An https URL on whop.com (or a subdomain) — nothing else is a
@@ -83,6 +114,9 @@ export function sanitizeProductInput(body: unknown): ProductInput | { error: str
       ? Math.round(b.sort_order)
       : 0;
 
+  const image_urls = parseImageUrls(b);
+  if (!Array.isArray(image_urls)) return image_urls;
+
   return {
     name,
     price_cents,
@@ -91,6 +125,7 @@ export function sanitizeProductInput(body: unknown): ProductInput | { error: str
     blurb: str(b.blurb).slice(0, 300),
     sort_order,
     visible: typeof b.visible === "boolean" ? b.visible : true,
+    image_urls,
   };
 }
 
@@ -144,6 +179,11 @@ export function sanitizeProductPatch(
   if ("visible" in b) {
     if (typeof b.visible !== "boolean") return { error: "Visible must be true or false." };
     patch.visible = b.visible;
+  }
+  if ("image_urls" in b) {
+    const image_urls = parseImageUrls(b);
+    if (!Array.isArray(image_urls)) return image_urls;
+    patch.image_urls = image_urls;
   }
 
   if (Object.keys(patch).length === 0) return { error: "Nothing to update." };
