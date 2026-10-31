@@ -19,6 +19,64 @@ function centsToField(priceCents: number): string {
 }
 
 /**
+ * Phone layout for THIS section only (owner report 31 Oct 2026: on
+ * mobile the products table ran off the right edge of the screen, so
+ * Download / Edit / Delete were unreachable). Every selector is scoped
+ * under .mh-products-admin and every rule lives inside the 640px media
+ * query, so the desktop table — and the blog table further up /admin,
+ * which shares the .admin-table classes — render exactly as before.
+ * At phone widths each row becomes a stacked card: product, price,
+ * group, status, updated date (each with its column label), then the
+ * full action row — nothing wider than the screen, no sideways scroll.
+ * The add/edit form already stacks full-width; the rules below just
+ * tighten its padding and guard against unbroken-string overflow.
+ */
+const MOBILE_CSS = `
+@media (max-width: 640px) {
+  .mh-products-admin .pa-table-wrap { overflow: visible; }
+  .mh-products-admin .admin-table,
+  .mh-products-admin .admin-table tbody,
+  .mh-products-admin .admin-table tr,
+  .mh-products-admin .admin-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .mh-products-admin .admin-table thead { display: none; }
+  .mh-products-admin .admin-table tr {
+    padding: 14px 16px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mh-products-admin .admin-table tbody tr:last-child { border-bottom: none; }
+  .mh-products-admin .admin-table td {
+    padding: 2px 0;
+    border-bottom: none;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .mh-products-admin .admin-table td:first-child { padding-bottom: 8px; }
+  .mh-products-admin .admin-table td:last-child { padding-top: 10px; }
+  .mh-products-admin .admin-table td[data-label]::before {
+    content: attr(data-label);
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--green-950);
+  }
+  .mh-products-admin .admin-table td img { max-width: 100%; }
+  .mh-products-admin .admin-actions { max-width: 100%; }
+  .mh-products-admin form.panel { padding: 16px; }
+  .mh-products-admin .field { min-width: 0; }
+  .mh-products-admin .field input[type="text"],
+  .mh-products-admin .field textarea,
+  .mh-products-admin .field select { max-width: 100%; box-sizing: border-box; }
+}
+`;
+
+/**
  * The Products section of /admin: every product on /printables, with
  * edit / add / delete and a visibility toggle. All calls go through
  * /api/admin/products, which re-verifies the admin session server-side.
@@ -206,7 +264,8 @@ export default function ProductsAdmin() {
   }
 
   return (
-    <div className="mt-24">
+    <div className="mt-24 mh-products-admin">
+      <style>{MOBILE_CSS}</style>
       <div className="admin-actions" style={{ marginBottom: 16 }}>
         <button type="button" className="btn btn-gold" onClick={openAdd}>
           + Add product
@@ -422,7 +481,7 @@ export default function ProductsAdmin() {
           built-in list — run supabase/products-table.sql, then reload this page.
         </p>
       ) : (
-        <div className="panel mt-24" style={{ padding: 0, overflow: "hidden" }}>
+        <div className="panel mt-24 pa-table-wrap" style={{ padding: 0, overflow: "hidden" }}>
           <table className="admin-table">
             <thead>
               <tr>
@@ -475,19 +534,19 @@ export default function ProductsAdmin() {
                       </>
                     )}
                   </td>
-                  <td>{priceText(product.price_cents)}</td>
-                  <td>{product.group_name}</td>
-                  <td>
+                  <td data-label="Price">{priceText(product.price_cents)}</td>
+                  <td data-label="Group">{product.group_name}</td>
+                  <td data-label="Visible">
                     <span
                       className={`status-pill ${product.visible ? "status-published" : "status-draft"}`}
                     >
                       {product.visible ? "Visible" : "Hidden"}
                     </span>
                   </td>
-                  <td>{new Date(product.updated_at).toLocaleDateString("en-GB")}</td>
+                  <td data-label="Updated">{new Date(product.updated_at).toLocaleDateString("en-GB")}</td>
                   <td>
                     {confirmingDeleteId === product.id ? (
-                      <div style={{ maxWidth: 320 }}>
+                      <div style={{ maxWidth: "min(320px, 100%)" }}>
                         <p style={{ margin: "0 0 6px", fontWeight: 700, color: "var(--red-600)" }}>
                           Delete “{product.name}” from this website?
                         </p>
