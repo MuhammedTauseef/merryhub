@@ -19,6 +19,10 @@ export interface ProductInput {
   /** Gallery image URLs in display order; element 1 is the cover.
    *  Empty = the card renders with no image, exactly as before. */
   image_urls: string[];
+  /** The product PDF's file name in the PRIVATE Supabase bucket
+   *  `admin-files` — the admin panel's private Download copy. Empty =
+   *  no file linked yet. Admin-only: never sent to the storefront. */
+  file_name: string;
 }
 
 const str = (v: unknown) => (typeof v === "string" ? v.trim() : "");
@@ -77,6 +81,25 @@ function isWhopUrl(raw: string): boolean {
   }
 }
 
+/** A product PDF's file name in the private `admin-files` bucket: a
+ *  bare `.pdf` name — it must END in `.pdf` and contain NO slashes (no
+ *  folders, no traversal, no leading dot, no ".."). The empty string
+ *  is valid and means "no file linked yet" (the Download button is
+ *  then disabled). Mirrors PRODUCT_FILE_RE in the files route. */
+const PRODUCT_FILE_RE = /^[A-Za-z0-9][A-Za-z0-9._-]*\.pdf$/;
+
+function parseFileName(raw: unknown): string | { error: string } {
+  const name = str(raw).slice(0, 200);
+  if (name === "") return "";
+  if (!PRODUCT_FILE_RE.test(name) || name.includes("..")) {
+    return {
+      error:
+        "The PDF file name must be a plain .pdf file name with no folders — e.g. merryhub-games-bundle.pdf.",
+    };
+  }
+  return name;
+}
+
 /**
  * Validates and normalises the admin payload for a product CREATE.
  * Returns the full row to store, or an error message. Anything not
@@ -117,6 +140,9 @@ export function sanitizeProductInput(body: unknown): ProductInput | { error: str
   const image_urls = parseImageUrls(b);
   if (!Array.isArray(image_urls)) return image_urls;
 
+  const file_name = parseFileName(b.file_name);
+  if (typeof file_name !== "string") return file_name;
+
   return {
     name,
     price_cents,
@@ -126,6 +152,7 @@ export function sanitizeProductInput(body: unknown): ProductInput | { error: str
     sort_order,
     visible: typeof b.visible === "boolean" ? b.visible : true,
     image_urls,
+    file_name,
   };
 }
 
@@ -184,6 +211,11 @@ export function sanitizeProductPatch(
     const image_urls = parseImageUrls(b);
     if (!Array.isArray(image_urls)) return image_urls;
     patch.image_urls = image_urls;
+  }
+  if ("file_name" in b) {
+    const file_name = parseFileName(b.file_name);
+    if (typeof file_name !== "string") return file_name;
+    patch.file_name = file_name;
   }
 
   if (Object.keys(patch).length === 0) return { error: "Nothing to update." };
