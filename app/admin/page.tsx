@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { adminApi, type AdminPost } from "@/components/admin/api";
+import ProductsAdmin from "@/components/admin/ProductsAdmin";
 import { getBrowserSupabase, supabaseConfigured } from "@/lib/supabase";
 
 export default function AdminHomePage() {
@@ -163,6 +164,15 @@ export default function AdminHomePage() {
               </tbody>
             </table>
           </div>
+        )}
+
+        {supabaseConfigured && (
+          <>
+            <div className="admin-bar mt-40">
+              <h2 style={{ margin: 0, fontSize: "1.35rem" }}>Products</h2>
+            </div>
+            <ProductsAdmin />
+          </>
         )}
       </div>
     </section>
