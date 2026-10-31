@@ -4,18 +4,26 @@ import Faq from "@/components/Faq";
 import { PRINTABLES_FAQS } from "@/lib/faqs";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
+import { loadPrintables, numberWord } from "@/lib/products";
 
-export const dynamic = "force-static";
+// Products are managed in /admin and read from the database per request
+// (same pattern as the blog), so admin edits go live with no redeploy.
+// If the read is unavailable, lib/products falls back to the built-in list.
+export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = pageMetadata({
-  path: "/printables",
-  title: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
-  description:
-    "Twenty printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available.",
-  ogTitle: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
-  ogDescription:
-    "Twenty printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available right now.",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const { count } = await loadPrintables();
+  const countWord = numberWord(count);
+  return pageMetadata({
+    path: "/printables",
+    title: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
+    description:
+      `${countWord} printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available.`,
+    ogTitle: "Printables — Christmas Bundles, All-Year Packs & Small Packs",
+    ogDescription:
+      `${countWord} printable packs from $2 to $7: the Complete Christmas Bundle ($7), Christmas games, elf kits, planners, cards, tags and more. Free sample available right now.`,
+  });
+}
 
 const PACK_CONTENTS = [
   {
@@ -60,130 +68,9 @@ const PACK_CONTENTS = [
   },
 ];
 
-const PRODUCT_GROUPS = [
-  {
-    title: "Christmas Bundles",
-    intro: "Start here: the complete bundle, then the Christmas bundles for games, elves and cards.",
-    products: [
-      {
-        name: "Complete Christmas Bundle",
-        price: "$7",
-        href: "https://whop.com/merryhub/merryhub-christmas-printable-pack-editable-print-and-play-55-pages-editab/",
-        text: "★ Featured bundle — 68 pages: games, elf kit, Advent cards, cards, gift tags and Santa letters.",
-      },
-      {
-        name: "Christmas Games Bundle",
-        price: "$4",
-        href: "https://whop.com/merryhub/products/christmas-games-bundle-15-printable-party-games-quiz-25-pages/",
-        text: "15 printable party games and a quiz, 25 pages in total.",
-      },
-      {
-        name: "Elf on the Shelf Kit + Advent Bundle",
-        price: "$4",
-        href: "https://whop.com/merryhub/products/elf-on-the-shelf-kit-advent-activity-cards-bundle-printable-editable/",
-        text: "The full elf kit plus 25 Advent activity cards.",
-      },
-      {
-        name: "Cards, Gift Tags & Santa Letters Bundle",
-        price: "$3",
-        href: "https://whop.com/merryhub/products/christmas-cards-gift-tags-santa-letters-bundle-printable-editable/",
-        text: "Printable Christmas cards, gift tags and Santa letters.",
-      },
-    ],
-  },
-  {
-    title: "All-Year Printables",
-    intro: "Printables for birthdays, babies, planners and everyday occasions — not just Christmas.",
-    products: [
-      {
-        name: "Baby Shower Bundle",
-        price: "$4",
-        href: "https://whop.com/merryhub/products/baby-shower-printable-bundle-10-games-bingo-cards-tags-banner/",
-        text: "10 games, bingo cards, tags and a banner for a baby shower.",
-      },
-      {
-        name: "ADHD-Friendly Planner",
-        price: "$4",
-        href: "https://whop.com/merryhub/products/adhd-friendly-planner-for-adults-undated-printable-daily-weekly-reset/",
-        text: "Undated daily and weekly planner with reset pages for adults.",
-      },
-      {
-        name: "Birthday Party Bundle",
-        price: "$3",
-        href: "https://whop.com/merryhub/products/birthday-party-printable-bundle-games-bingo-cards-tags-banner/",
-        text: "Games, bingo cards, tags and a banner for a birthday party.",
-      },
-      {
-        name: "Kids Puzzle & Activity Pack",
-        price: "$3",
-        href: "https://whop.com/merryhub/products/kids-puzzle-activity-pack-printable-word-search-mazes-sudoku-ages-6-12/",
-        text: "Word searches, mazes and sudoku for ages 6–12.",
-      },
-      {
-        name: "2027 New Year Planner",
-        price: "$3",
-        href: "https://whop.com/merryhub/products/2027-new-year-planner-printable-goals-monthly-pages-january-weeks-a4/",
-        text: "Goals, monthly pages and January weeks for 2027, A4.",
-      },
-      {
-        name: "Christmas Wall Art Set",
-        price: "$3",
-        href: "https://whop.com/merryhub/products/christmas-wall-art-set-of-6-prints-printable-8x10-festive-typography-decor/",
-        text: "Set of 6 festive typography prints, 8×10.",
-      },
-      {
-        name: "All-Occasion Cards & Tags",
-        price: "$2",
-        href: "https://whop.com/merryhub/products/all-occasion-printable-cards-gift-tags-12-cards-24-tags/",
-        text: "12 printable cards and 24 gift tags for any occasion.",
-      },
-      {
-        name: "Planners & Productivity Bundle", price: "$4", href: "https://whop.com/merryhub/planners-productivity-bundle-undated-daily-weekly-habit-goal-pages", text: "Undated daily, weekly, habit and goal pages, 28 A4 pages, editable in the PDF.", }, { name: "Christmas Gift Coupons",
-        price: "$2",
-        href: "https://whop.com/merryhub/products/christmas-gift-coupons-printable-16-coupons-4-blank-instant-download/",
-        text: "16 printable gift coupons, plus 4 blank ones.", }, { name: "Home Organization Bundle", price: "$3", href: "https://whop.com/merryhub/home-organization-bundle-meal-planner-cleaning-schedules-declutter", text: "Meal planner, grocery lists, cleaning schedules, chores rota and a 30-day declutter challenge — 26 A4 pages, editable in the PDF.", }, { name: "Budget & Finance Planner Bundle", price: "$4", href: "https://whop.com/merryhub/budget-finance-planner-bundle-monthly-budget-bills-savings-debt", text: "Monthly budget, bills, savings and debt pages — 28 A4 pages, editable in the PDF.",
-      },
-    ],
-  },
-  {
-    title: "Small Packs — $2–$3",
-    intro: "Smaller packs for one job: elf notes, party games, Advent and quiz night.",
-    products: [
-      {
-        name: "Elf Notes & Letters Pack",
-        price: "$3",
-        href: "https://whop.com/merryhub/products/elf-notes-letters-pack-arrival-goodbye-24-notes-report-card/",
-        text: "Arrival and goodbye letters, 24 notes and a report card.",
-      },
-      {
-        name: "Party Games Mini-Pack",
-        price: "$3",
-        href: "https://whop.com/merryhub/products/christmas-party-games-mini-pack-10-printable-games-answer-keys/",
-        text: "10 printable party games with answer keys.",
-      },
-      {
-        name: "Advent Activity Cards",
-        price: "$2",
-        href: "https://whop.com/merryhub/products/advent-activity-cards-25-printable-cards-for-1-25-december/",
-        text: "25 printable cards for 1–25 December.",
-      },
-      {
-        name: "Gift Tags & Santa Letters Set",
-        price: "$2",
-        href: "https://whop.com/merryhub/products/gift-tags-santa-letters-set-24-tags-letters-editable/",
-        text: "24 gift tags and Santa letters, editable.",
-      },
-      {
-        name: "Christmas Quiz Night Pack",
-        price: "$2",
-        href: "https://whop.com/merryhub/products/christmas-quiz-night-pack-big-quiz-trivia-carols-keys/",
-        text: "Big quiz, trivia and carols with answer keys.",
-      },
-    ],
-  },
-];
 
-export default function PrintablesPage() {
+export default async function PrintablesPage() {
+  const { groups, count } = await loadPrintables();
   const shareTitle = "Printables — Christmas Bundles, All-Year Packs & Small Packs";
   const shareUrl = `${SITE_URL}/printables`;
   const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`;
@@ -194,7 +81,7 @@ export default function PrintablesPage() {
         <div className="wrap">
           <h1>Printables</h1>
           <p>
-            Twenty printable packs, from $2 to $7 — led by the Complete Christmas Bundle
+            {numberWord(count)} printable packs, from $2 to $7 — led by the Complete Christmas Bundle
             at $7. Buy once, download instantly, print as many copies as you need. A free
             sample is ready below, right now.
           </p>
@@ -202,7 +89,7 @@ export default function PrintablesPage() {
       </section>
       <section className="page-body">
         <div className="wrap">
-          {PRODUCT_GROUPS.map((group) => (
+          {groups.map((group) => (
             <div key={group.title} className="mt-40">
               <h2 style={{ textAlign: "center" }}>{group.title}</h2>
               <p className="section-lede" style={{ textAlign: "center", color: "var(--muted)", maxWidth: 620, margin: "0 auto 30px" }}>
