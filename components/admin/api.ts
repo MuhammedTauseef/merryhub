@@ -29,6 +29,8 @@ export interface AdminProduct {
   blurb: string;
   sort_order: number;
   visible: boolean;
+  /** Gallery image URLs in display order; element 1 is the cover. */
+  image_urls: string[];
   created_at: string;
   updated_at: string;
 }
