@@ -59,7 +59,7 @@ export const PRINTABLES_FAQS: FaqItem[] = [
   },
   {
     q: "When can I buy the Complete Christmas Bundle?",
-    a: "Right now — it is finished and on sale for $7. Use the buy button on this page: secure checkout by Whop, and the PDFs are delivered to you right after payment. Seventeen packs are available in total, from $2 to $7. There are no pre-orders and no email sign-ups.",
+    a: "Right now — it is finished and on sale for $7. Use the buy button on this page: secure checkout by Whop, and the PDFs are delivered to you right after payment. All of our packs are available now, priced from $2 to $7 — each one has its own page with photos and a full list of what is inside. There are no pre-orders and no email sign-ups.",
   },
   {
     q: "Can I print copies for my class or office?",
