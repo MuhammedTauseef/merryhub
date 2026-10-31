@@ -43,6 +43,10 @@ export default function ProductsAdmin() {
   const [blurb, setBlurb] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [visible, setVisible] = useState(true);
+  // The gallery is edited as a cover field (image 1) + a one-URL-per-line
+  // textarea for the rest; on save they recombine into image_urls.
+  const [coverUrl, setCoverUrl] = useState("");
+  const [galleryText, setGalleryText] = useState("");
 
   // In-page delete confirmation: the id of the product whose row is
   // showing its inline "Delete this product?" prompt, or null. Native
@@ -82,6 +86,8 @@ export default function ProductsAdmin() {
     setBlurb("");
     setSortOrder("");
     setVisible(true);
+    setCoverUrl("");
+    setGalleryText("");
     setNotice("");
     setFormOpen(true);
   }
@@ -96,6 +102,9 @@ export default function ProductsAdmin() {
     setBlurb(product.blurb);
     setSortOrder(String(product.sort_order));
     setVisible(product.visible);
+    const gallery = product.image_urls ?? [];
+    setCoverUrl(gallery[0] ?? "");
+    setGalleryText(gallery.slice(1).join("\n"));
     setNotice("");
     setFormOpen(true);
   }
@@ -104,6 +113,10 @@ export default function ProductsAdmin() {
     e.preventDefault();
     setSaving(true);
     setError("");
+    const image_urls = [
+      coverUrl.trim(),
+      ...galleryText.split("\n").map((line) => line.trim()),
+    ].filter((u) => u !== "");
     const payload: Record<string, unknown> = {
       name,
       price,
@@ -111,6 +124,7 @@ export default function ProductsAdmin() {
       group_name: groupName,
       blurb,
       visible,
+      image_urls,
     };
     if (sortOrder.trim() !== "") payload.sort_order = Number(sortOrder);
     try {
@@ -234,6 +248,61 @@ export default function ProductsAdmin() {
             <p className="hint">The card&apos;s Buy button sends buyers to this exact Whop page.</p>
           </div>
           <div className="field">
+            <label htmlFor="p-cover">Cover image URL (the card&apos;s photo)</label>
+            <input
+              id="p-cover"
+              type="text"
+              value={coverUrl}
+              onChange={(e) => setCoverUrl(e.target.value)}
+              placeholder="https://…/covers/merryhub-….png"
+            />
+            <p className="hint">
+              Shown at the top of the card and first in its photo gallery. Leave blank for a
+              plain card with no photo.
+            </p>
+          </div>
+          <div className="field">
+            <label htmlFor="p-gallery">Gallery image URLs — one per line</label>
+            <textarea
+              id="p-gallery"
+              value={galleryText}
+              onChange={(e) => setGalleryText(e.target.value)}
+              rows={4}
+              placeholder={"https://…/gallery/…/2.jpg\nhttps://…/gallery/…/3.jpg"}
+            />
+            <p className="hint">
+              The extra photos in the card&apos;s gallery, in order, after the cover. Up to 5
+              more (6 images in total). Every URL must start with https://.
+            </p>
+          </div>
+          {(coverUrl.trim() !== "" || galleryText.trim() !== "") && (
+            <div className="field">
+              <span className="hint" style={{ display: "block", marginBottom: 6 }}>
+                Current gallery preview
+              </span>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {[coverUrl, ...galleryText.split("\n")]
+                  .map((u) => u.trim())
+                  .filter((u) => u !== "")
+                  .map((u, i) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={u + i}
+                      src={u}
+                      alt={i === 0 ? "Cover preview" : `Gallery photo ${i + 1}`}
+                      style={{
+                        width: 96,
+                        height: 64,
+                        objectFit: "cover",
+                        borderRadius: 6,
+                        border: "1px solid var(--line, #ddd)",
+                      }}
+                    />
+                  ))}
+              </div>
+            </div>
+          )}
+          <div className="field">
             <label htmlFor="p-group">Group (section on /printables)</label>
             <select
               id="p-group"
@@ -323,6 +392,22 @@ export default function ProductsAdmin() {
               {products.map((product) => (
                 <tr key={product.id}>
                   <td>
+                    {product.image_urls && product.image_urls.length > 0 && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={product.image_urls[0]}
+                        alt=""
+                        loading="lazy"
+                        style={{
+                          width: 84,
+                          height: 56,
+                          objectFit: "cover",
+                          borderRadius: 6,
+                          display: "block",
+                          marginBottom: 6,
+                        }}
+                      />
+                    )}
                     <strong>{product.name}</strong>
                     {product.blurb && (
                       <>
