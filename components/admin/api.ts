@@ -19,6 +19,20 @@ export interface AdminPost {
   updated_at: string;
 }
 
+/** A products row as the admin API returns it. */
+export interface AdminProduct {
+  id: string;
+  name: string;
+  price_cents: number;
+  whop_url: string;
+  group_name: string;
+  blurb: string;
+  sort_order: number;
+  visible: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 /** Current session's access token, or null when signed out/unconfigured. */
 export async function getAccessToken(): Promise<string | null> {
   const supabase = getBrowserSupabase();
