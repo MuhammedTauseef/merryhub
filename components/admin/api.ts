@@ -31,6 +31,9 @@ export interface AdminProduct {
   visible: boolean;
   /** Gallery image URLs in display order; element 1 is the cover. */
   image_urls: string[];
+  /** The product PDF's file name in the private `admin-files` bucket
+   *  ("" = no file linked). Powers the row's Download button. */
+  file_name: string;
   created_at: string;
   updated_at: string;
 }
