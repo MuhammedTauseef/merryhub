@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { adminApi, type AdminProduct } from "@/components/admin/api";
+import { adminApi, getAccessToken, type AdminProduct } from "@/components/admin/api";
 import { PRODUCT_GROUPS } from "@/lib/admin-products";
 
 /** 700 → "$7"; 750 → "$7.50" (display copy of lib/products' formatPrice,
@@ -16,6 +16,38 @@ function priceText(priceCents: number): string {
 /** 700 → "7"; 750 → "7.5" — the price field's editable text. */
 function centsToField(priceCents: number): string {
   return (priceCents / 100).toFixed(2).replace(/\.?0+$/, "");
+}
+
+/**
+ * Downloads one admin-only file from /api/admin/files/… and saves it on
+ * this device. The route streams the PDF bytes back (it no longer hands
+ * out a signed URL for the browser to open), so the file is fetched with
+ * the admin token, turned into a blob, and saved through a temporary
+ * download link — that is what makes a phone browser actually SAVE the
+ * file instead of just opening it in a viewer tab that gets dropped.
+ * Errors mirror adminApi: "signed-out" for a missing/expired session,
+ * otherwise the route's own error message.
+ */
+async function downloadAdminFile(path: string, filename: string): Promise<void> {
+  const token = await getAccessToken();
+  if (!token) throw new Error("signed-out");
+  const res = await fetch(path, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    if (res.status === 401) throw new Error("signed-out");
+    const body = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(body.error ?? `Request failed (${res.status})`);
+  }
+  const blob = await res.blob();
+  const objectUrl = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = objectUrl;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1500);
 }
 
 /**
@@ -242,16 +274,17 @@ export default function ProductsAdmin() {
   // The admin's private copy of a product's PDF — the same pattern as
   // the pack downloads on the blog admin: the files route checks the
   // admin session AND that this file name is stored on a product row,
-  // then returns a 2-minute signed URL. Never a public link.
+  // then streams the file's bytes back through the route. Never a
+  // public link.
   async function onDownload(product: AdminProduct) {
     if (!product.file_name) return;
     setDownloadingId(product.id);
     setError("");
     try {
-      const { url } = await adminApi<{ url: string }>(
+      await downloadAdminFile(
         `/api/admin/files/${encodeURIComponent(product.file_name)}`,
+        product.file_name,
       );
-      window.open(url, "_blank", "noopener");
     } catch (err) {
       if (err instanceof Error && err.message === "signed-out") {
         router.replace("/admin/login");
