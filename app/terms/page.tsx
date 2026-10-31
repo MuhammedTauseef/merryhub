@@ -43,6 +43,17 @@ export default function TermsPage() {
             needs, but please do not share, resell, upload or redistribute the files
             themselves — send friends to {SITE_NAME} instead so they can get their own copy.
           </p>
+          <h2>Digital downloads and payments</h2>
+          <p>
+            The printable packs are digital products: no physical item is shipped.
+            Payments are processed by Whop, and Whop's own terms apply to the
+            transaction. Right after checkout, Whop delivers the PDF as a download,
+            and the file also stays in your Whop library so you can download it
+            again. Files are PDFs made for home printing on A4 or US Letter paper.
+            Each product page shows photos of the real pages and a full list of
+            what is inside, so you can check exactly what you are buying before
+            you pay.
+          </p>
           <h2>Our content</h2>
           <p>
             The text, designs, artwork and layout on {SITE_NAME} belong to {SITE_NAME} or its
