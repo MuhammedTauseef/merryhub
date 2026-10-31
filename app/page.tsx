@@ -113,6 +113,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="section section-alt">
+        <div className="wrap">
+          <h2>New favourites, front of the shop</h2>
+          <p className="section-lede">
+            Our two newest big packs — the wedding binder couples asked for, and 300 pages of
+            screen-free fun for the kids.
+          </p>
+          <div className="tool-grid">
+            <div className="tool-card"><a href="/printables/wedding-planner-bundle" aria-label="Wedding Planner Bundle — see what's inside">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/covers-web/merryhub-wedding-planner.webp" alt="Wedding Planner Bundle" loading="lazy" style={{ width: "100%", aspectRatio: "3 / 2", objectFit: "cover", borderRadius: 10, display: "block", marginBottom: 14 }}/></a><HomeGallery name="Wedding Planner Bundle" /><h3><a href="/printables/wedding-planner-bundle" style={{ color: "inherit", textDecoration: "none" }}>Wedding Planner Bundle</a></h3><p>260 A4 pages: countdown checklists, budget, guest list, vendors, seating and day-of timelines — editable in the PDF.</p><p>$4</p><a href="https://whop.com/merryhub/wedding-planner-bundle-260-pages-checklists-budget-guest-list" target="_blank" rel="noreferrer" className="btn btn-red">Buy — $4</a></div>
+            <div className="tool-card"><a href="/printables/kids-coloring-activity-pack" aria-label="Kids Coloring & Activity Pack — see what's inside">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/covers-web/merryhub-kids-coloring-activity-pack.webp" alt="Kids Coloring & Activity Pack" loading="lazy" style={{ width: "100%", aspectRatio: "3 / 2", objectFit: "cover", borderRadius: 10, display: "block", marginBottom: 14 }}/></a><HomeGallery name="Kids Coloring & Activity Pack" /><h3><a href="/printables/kids-coloring-activity-pack" style={{ color: "inherit", textDecoration: "none" }}>Kids Coloring & Activity Pack</a></h3><p>300 pages of colouring, ABC and number learning, mazes and puzzles for ages 4–10.</p><p>$3</p><a href="https://whop.com/merryhub/kids-coloring-activity-pack-300-pages-colouring-mazes-learning/" target="_blank" rel="noreferrer" className="btn btn-red">Buy — $3</a></div>
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="wrap">
           <h2>More ways to spread the merry</h2>
