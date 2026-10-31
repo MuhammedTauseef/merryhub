@@ -31,6 +31,17 @@ const nextConfig = {
   async headers() {
     return [
       {
+        // The free sample PDF must SAVE on phones, not open in a viewer:
+        // force an attachment disposition for this exact file only.
+        source: "/printables/merryhub-printables-sample.pdf",
+        headers: [
+          {
+            key: "Content-Disposition",
+            value: 'attachment; filename="merryhub-printables-sample.pdf"',
+          },
+        ],
+      },
+      {
         source: "/:path*",
         headers: securityHeaders,
       },
