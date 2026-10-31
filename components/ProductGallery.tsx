@@ -282,6 +282,7 @@ export default function ProductGallery({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
+          data-product={name}
         >
           Buy — {price} →
         </a>
