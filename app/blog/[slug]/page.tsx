@@ -7,9 +7,18 @@ import { formatPostDate, getAllPosts, getPost } from "@/lib/posts";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-// Posts come from Supabase at request time, so a publish in the admin
-// panel goes live without a redeploy.
-export const dynamic = "force-dynamic";
+// Posts come from Supabase and the rendered pages are cached (ISR):
+// they revalidate every 60 seconds, so a publish in the admin panel
+// goes live within about a minute, with no redeploy. The slugs that
+// exist at build time are prerendered below; dynamicParams stays at
+// its default (true), so a brand-new slug still renders on its first
+// hit and is cached from then on.
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
 
 // The editor's content format allows **bold** spans (like the other
 // projects' editors). Stored text keeps the markers so editing stays
