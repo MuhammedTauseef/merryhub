@@ -6,7 +6,7 @@ import { getServiceSupabase } from "@/lib/supabase";
 export const dynamic = "force-dynamic";
 
 const ADMIN_COLUMNS =
-  "id,name,price_cents,whop_url,group_name,blurb,sort_order,visible,created_at,updated_at";
+  "id,name,price_cents,whop_url,group_name,blurb,sort_order,visible,image_urls,created_at,updated_at";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
