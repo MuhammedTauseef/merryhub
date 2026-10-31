@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Faq from "@/components/Faq";
+import ProductGallery from "@/components/ProductGallery";
 import { PRINTABLES_FAQS } from "@/lib/faqs";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
@@ -98,6 +99,15 @@ export default async function PrintablesPage() {
               <div className="tool-grid">
                 {group.products.map((product) => (
                   <div className="tool-card" key={product.name}>
+                    {product.imageUrls.length > 0 && (
+                      <ProductGallery
+                        name={product.name}
+                        price={product.price}
+                        text={product.text}
+                        href={product.href}
+                        images={product.imageUrls}
+                      />
+                    )}
                     <h3>{product.name} — {product.price}</h3>
                     <p>{product.text}</p>
                     <a
