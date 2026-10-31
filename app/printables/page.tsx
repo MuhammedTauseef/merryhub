@@ -7,10 +7,13 @@ import { pageMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { loadPrintables, numberWord } from "@/lib/products";
 
-// Products are managed in /admin and read from the database per request
-// (same pattern as the blog), so admin edits go live with no redeploy.
-// If the read is unavailable, lib/products falls back to the built-in list.
-export const dynamic = "force-dynamic";
+// Products are managed in /admin and read from the database (same
+// pattern as the blog). The rendered page is cached (ISR) and
+// revalidates every 60 seconds, so admin edits go live within about
+// a minute, with no redeploy. Each render still reads the database
+// first; if that read is unavailable, lib/products falls back to the
+// built-in list for that render.
+export const revalidate = 60;
 
 export async function generateMetadata(): Promise<Metadata> {
   const { count } = await loadPrintables();
