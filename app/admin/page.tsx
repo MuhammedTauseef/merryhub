@@ -3,9 +3,41 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { adminApi, type AdminPost } from "@/components/admin/api";
+import { adminApi, getAccessToken, type AdminPost } from "@/components/admin/api";
 import ProductsAdmin from "@/components/admin/ProductsAdmin";
 import { getBrowserSupabase, supabaseConfigured } from "@/lib/supabase";
+
+/**
+ * Downloads one admin-only file from /api/admin/files/… and saves it on
+ * this device. The route streams the PDF bytes back (it no longer hands
+ * out a signed URL for the browser to open), so the file is fetched with
+ * the admin token, turned into a blob, and saved through a temporary
+ * download link — that is what makes a phone browser actually SAVE the
+ * file instead of just opening it in a viewer tab that gets dropped.
+ * Errors mirror adminApi: "signed-out" for a missing/expired session,
+ * otherwise the route's own error message.
+ */
+async function downloadAdminFile(path: string, filename: string): Promise<void> {
+  const token = await getAccessToken();
+  if (!token) throw new Error("signed-out");
+  const res = await fetch(path, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) {
+    if (res.status === 401) throw new Error("signed-out");
+    const body = (await res.json().catch(() => ({}))) as { error?: string };
+    throw new Error(body.error ?? `Request failed (${res.status})`);
+  }
+  const blob = await res.blob();
+  const objectUrl = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = objectUrl;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1500);
+}
 
 export default function AdminHomePage() {
   const router = useRouter();
@@ -52,8 +84,14 @@ export default function AdminHomePage() {
 
   async function onDownloadPack(name: "full-pack" | "editable-premium") {
     try {
-      const { url } = await adminApi<{ url: string }>(`/api/admin/files/${name}`);
-      window.open(url, "_blank", "noopener");
+      // The saved name matches the file the route streams (its
+      // Content-Disposition carries the same stored name).
+      await downloadAdminFile(
+        `/api/admin/files/${name}`,
+        name === "full-pack"
+          ? "merryhub-printable-pack-full.pdf"
+          : "merryhub-editable-premium-pack.pdf",
+      );
     } catch (err) {
       setError(err instanceof Error ? err.message : "Download failed.");
     }
@@ -88,7 +126,7 @@ export default function AdminHomePage() {
                 className="btn btn-gold"
                 onClick={() => void onDownloadPack("full-pack")}
               >
-                ⬇ Full pack (55 pages)
+                ⬇ Full pack (56 pages)
               </button>
               <button
                 type="button"
