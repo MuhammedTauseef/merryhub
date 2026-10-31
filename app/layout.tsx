@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import CountdownStrip from "@/components/CountdownStrip";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import BuyClickTracker from "@/components/BuyClickTracker";
 import { getCountdownParts } from "@/lib/dates";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <GoogleAnalytics />
+        <BuyClickTracker />
         <JsonLd data={SITE_SCHEMA} />
         <CountdownStrip initial={countdown} />
         <Header />
