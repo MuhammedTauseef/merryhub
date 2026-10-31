@@ -304,6 +304,19 @@ export const FALLBACK_GROUPS: PrintableGroup[] = [
         ],
       },
       {
+        name: "GoodNotes Planner",
+        price: "$5.99",
+        href: "https://whop.com/merryhub/goodnotes-planner-1-000-hyperlinked-pages-for-ipad-daily-weekly-monthly",
+        text: "1,000 hyperlinked A4 pages for GoodNotes & Notability: tap the tabs to jump to any month, week or day.",
+        imageUrls: [
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/covers-web/merryhub-goodnotes-planner.webp",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/goodnotes-planner/2.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/goodnotes-planner/3.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/goodnotes-planner/4.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/goodnotes-planner/5.jpg",
+        ],
+      },
+      {
         name: "Kids Coloring & Activity Pack",
         price: "$3",
         href: "https://whop.com/merryhub/kids-coloring-activity-pack-300-pages-colouring-mazes-learning/",
