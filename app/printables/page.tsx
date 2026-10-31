@@ -6,6 +6,7 @@ import { PRINTABLES_FAQS } from "@/lib/faqs";
 import { pageMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 import { loadPrintables, numberWord } from "@/lib/products";
+import { productSlug } from "@/lib/product-details";
 
 // Products are managed in /admin and read from the database (same
 // pattern as the blog). The rendered page is cached (ISR) and
@@ -118,11 +119,17 @@ export default async function PrintablesPage() {
                       href={product.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-product={product.name}
                     >
                       Buy — {product.price} →
                     </a>
                     <p className="hint mt-24">
                       Secure checkout by Whop • Personal use • Print at home on A4 or US Letter.
+                    </p>
+                    <p style={{ marginTop: 10 }}>
+                      <Link href={`/printables/${productSlug(product.name)}`}>
+                        See what&apos;s inside →
+                      </Link>
                     </p>
                   </div>
                 ))}
