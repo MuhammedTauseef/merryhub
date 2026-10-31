@@ -3,9 +3,10 @@ import Link from "next/link";
 import { formatPostDate, getAllPosts } from "@/lib/posts";
 import { pageMetadata } from "@/lib/seo";
 
-// Posts come from Supabase at request time, so a publish in the admin
-// panel goes live without a redeploy.
-export const dynamic = "force-dynamic";
+// Posts come from Supabase and the rendered page is cached (ISR):
+// it revalidates every 60 seconds, so a publish in the admin panel
+// goes live within about a minute, with no redeploy.
+export const revalidate = 60;
 
 export const metadata: Metadata = pageMetadata({
   path: "/blog",
