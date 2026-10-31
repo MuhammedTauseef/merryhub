@@ -43,6 +43,9 @@ export default function ProductsAdmin() {
   const [blurb, setBlurb] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const [visible, setVisible] = useState(true);
+  const [fileName, setFileName] = useState("");
+  // The id of the product whose PDF download is being prepared, or null.
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
   // The gallery is edited as a cover field (image 1) + a one-URL-per-line
   // textarea for the rest; on save they recombine into image_urls.
   const [coverUrl, setCoverUrl] = useState("");
@@ -86,6 +89,7 @@ export default function ProductsAdmin() {
     setBlurb("");
     setSortOrder("");
     setVisible(true);
+    setFileName("");
     setCoverUrl("");
     setGalleryText("");
     setNotice("");
@@ -102,6 +106,7 @@ export default function ProductsAdmin() {
     setBlurb(product.blurb);
     setSortOrder(String(product.sort_order));
     setVisible(product.visible);
+    setFileName(product.file_name ?? "");
     const gallery = product.image_urls ?? [];
     setCoverUrl(gallery[0] ?? "");
     setGalleryText(gallery.slice(1).join("\n"));
@@ -124,6 +129,7 @@ export default function ProductsAdmin() {
       group_name: groupName,
       blurb,
       visible,
+      file_name: fileName,
       image_urls,
     };
     if (sortOrder.trim() !== "") payload.sort_order = Number(sortOrder);
@@ -175,6 +181,30 @@ export default function ProductsAdmin() {
     }
   }
 
+  // The admin's private copy of a product's PDF — the same pattern as
+  // the pack downloads on the blog admin: the files route checks the
+  // admin session AND that this file name is stored on a product row,
+  // then returns a 2-minute signed URL. Never a public link.
+  async function onDownload(product: AdminProduct) {
+    if (!product.file_name) return;
+    setDownloadingId(product.id);
+    setError("");
+    try {
+      const { url } = await adminApi<{ url: string }>(
+        `/api/admin/files/${encodeURIComponent(product.file_name)}`,
+      );
+      window.open(url, "_blank", "noopener");
+    } catch (err) {
+      if (err instanceof Error && err.message === "signed-out") {
+        router.replace("/admin/login");
+        return;
+      }
+      setError(err instanceof Error ? err.message : "Download failed.");
+    } finally {
+      setDownloadingId(null);
+    }
+  }
+
   return (
     <div className="mt-24">
       <div className="admin-actions" style={{ marginBottom: 16 }}>
@@ -194,7 +224,8 @@ export default function ProductsAdmin() {
       <p className="hint" style={{ marginTop: 0 }}>
         These are the products shown on <strong>/printables</strong>. Editing a price, blurb or
         link here updates the website straight away — the price and product on Whop itself are
-        changed on Whop. Hide a product to remove its card without deleting it.
+        changed on Whop. Hide a product to remove its card without deleting it. Use a
+        row&apos;s <strong>Download</strong> button for your private copy of a product&apos;s PDF.
       </p>
 
       {notice && (
@@ -338,6 +369,21 @@ export default function ProductsAdmin() {
             <p className="hint">Lower numbers come first. Leave blank on a new product to put it last in its group.</p>
           </div>
           <div className="field">
+            <label htmlFor="p-file">PDF file name (your private download copy)</label>
+            <input
+              id="p-file"
+              type="text"
+              value={fileName}
+              onChange={(e) => setFileName(e.target.value)}
+              placeholder="merryhub-games-bundle.pdf"
+            />
+            <p className="hint">
+              The exact name of this product&apos;s PDF in the private admin-files bucket.
+              The row&apos;s Download button fetches that file for you — it is never shown to
+              visitors or buyers. Leave blank if the file has not been uploaded yet.
+            </p>
+          </div>
+          <div className="field">
             <label htmlFor="p-visible" style={{ display: "flex", gap: 10, alignItems: "center" }}>
               <input
                 id="p-visible"
@@ -415,6 +461,19 @@ export default function ProductsAdmin() {
                         <span className="hint">{product.blurb}</span>
                       </>
                     )}
+                    {product.file_name ? (
+                      <>
+                        <br />
+                        <span className="hint">📄 {product.file_name}</span>
+                      </>
+                    ) : (
+                      <>
+                        <br />
+                        <span className="hint">
+                          No PDF linked yet — Edit to add its file name.
+                        </span>
+                      </>
+                    )}
                   </td>
                   <td>{priceText(product.price_cents)}</td>
                   <td>{product.group_name}</td>
@@ -465,6 +524,25 @@ export default function ProductsAdmin() {
                         >
                           Open on Whop ↗
                         </a>
+                        {product.file_name ? (
+                          <button
+                            type="button"
+                            className="btn btn-small btn-gold"
+                            disabled={downloadingId === product.id}
+                            onClick={() => void onDownload(product)}
+                          >
+                            {downloadingId === product.id ? "Preparing…" : "⬇ Download"}
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="btn btn-small btn-outline-dark"
+                            disabled
+                            title="No PDF file name set — use Edit to add one."
+                          >
+                            ⬇ Download
+                          </button>
+                        )}
                         <button
                           type="button"
                           className="btn btn-small btn-green"
