@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
+import { loadPrintables } from "@/lib/products";
+import { productSlug } from "@/lib/product-details";
 import { SITE_URL } from "@/lib/site";
 import { WISH_CATEGORIES } from "@/lib/wishes";
 
@@ -36,6 +38,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
+  // Individual product pages (same products table as /printables;
+  // loadPrintables falls back to the built-in list if the read fails).
+  const { groups } = await loadPrintables();
+  const productRoutes = groups.flatMap((g) =>
+    g.products.map((p) => ({
+      url: `${SITE_URL}/printables/${productSlug(p.name)}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.75,
+    })),
+  );
   return [
     ...[...staticRoutes, ...wishRoutes].map((r) => ({
       url: `${SITE_URL}${r.path}`,
@@ -43,6 +56,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: r.changeFrequency,
       priority: r.priority,
     })),
+    ...productRoutes,
     ...postRoutes,
   ];
 }
