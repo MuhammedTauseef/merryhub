@@ -44,6 +44,13 @@ export default function ProductsAdmin() {
   const [sortOrder, setSortOrder] = useState("");
   const [visible, setVisible] = useState(true);
 
+  // In-page delete confirmation: the id of the product whose row is
+  // showing its inline "Delete this product?" prompt, or null. Native
+  // window.confirm is not used — browser automation auto-dismisses it,
+  // which made a delete impossible to complete or verify by tooling.
+  const [confirmingDeleteId, setConfirmingDeleteId] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState(false);
+
   const load = useCallback(async () => {
     setLoading(true);
     try {
@@ -66,6 +73,7 @@ export default function ProductsAdmin() {
   }, [load]);
 
   function openAdd() {
+    setConfirmingDeleteId(null);
     setEditingId(null);
     setName("");
     setPrice("");
@@ -79,6 +87,7 @@ export default function ProductsAdmin() {
   }
 
   function openEdit(product: AdminProduct) {
+    setConfirmingDeleteId(null);
     setEditingId(product.id);
     setName(product.name);
     setPrice(centsToField(product.price_cents));
@@ -132,21 +141,23 @@ export default function ProductsAdmin() {
     }
   }
 
+  // Fires ONLY from the row's in-page "Yes, delete" button — never
+  // directly from the Delete button, which only opens the prompt.
   async function onDelete(product: AdminProduct) {
-    const confirmed = window.confirm(
-      `Delete “${product.name}” from this website?\n\n` +
-        "This removes the product from this website only. The product on Whop is not changed — delete it on Whop separately if needed.",
-    );
-    if (!confirmed) return;
+    setDeleting(true);
+    setError("");
     try {
       await adminApi("/api/admin/products", {
         method: "DELETE",
         body: JSON.stringify({ id: product.id }),
       });
       setProducts((prev) => prev.filter((p) => p.id !== product.id));
+      setConfirmingDeleteId(null);
       setNotice(`Deleted “${product.name}” from the website. Its Whop product was not changed.`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Delete failed.");
+    } finally {
+      setDeleting(false);
     }
   }
 
@@ -331,30 +342,63 @@ export default function ProductsAdmin() {
                   </td>
                   <td>{new Date(product.updated_at).toLocaleDateString("en-GB")}</td>
                   <td>
-                    <div className="admin-actions">
-                      <a
-                        className="btn btn-small btn-outline-dark"
-                        href={product.whop_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Open on Whop ↗
-                      </a>
-                      <button
-                        type="button"
-                        className="btn btn-small btn-green"
-                        onClick={() => openEdit(product)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-small btn-red"
-                        onClick={() => void onDelete(product)}
-                      >
-                        Delete
-                      </button>
-                    </div>
+                    {confirmingDeleteId === product.id ? (
+                      <div style={{ maxWidth: 320 }}>
+                        <p style={{ margin: "0 0 6px", fontWeight: 700, color: "var(--red-600)" }}>
+                          Delete “{product.name}” from this website?
+                        </p>
+                        <p className="hint" style={{ margin: "0 0 8px" }}>
+                          This removes the product from this website only. The product on Whop is
+                          not changed — delete it on Whop separately if needed.
+                        </p>
+                        <div className="admin-actions">
+                          <button
+                            type="button"
+                            className="btn btn-small btn-red"
+                            disabled={deleting}
+                            onClick={() => void onDelete(product)}
+                          >
+                            {deleting ? "Deleting…" : "Yes, delete"}
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-small btn-outline-dark"
+                            disabled={deleting}
+                            onClick={() => setConfirmingDeleteId(null)}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="admin-actions">
+                        <a
+                          className="btn btn-small btn-outline-dark"
+                          href={product.whop_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Open on Whop ↗
+                        </a>
+                        <button
+                          type="button"
+                          className="btn btn-small btn-green"
+                          onClick={() => openEdit(product)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-small btn-red"
+                          onClick={() => {
+                            setError("");
+                            setConfirmingDeleteId(product.id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}
