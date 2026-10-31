@@ -278,6 +278,19 @@ export const FALLBACK_GROUPS: PrintableGroup[] = [
         ],
       },
       {
+        name: "Wedding Planner Bundle",
+        price: "$4",
+        href: "https://whop.com/merryhub/wedding-planner-bundle-260-pages-checklists-budget-guest-list",
+        text: "260 A4 pages: countdown checklists, budget, guest list, vendors, seating and day-of timelines — editable in the PDF.",
+        imageUrls: [
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/covers-web/merryhub-wedding-planner.webp",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/wedding-planner-bundle/2.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/wedding-planner-bundle/3.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/wedding-planner-bundle/4.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/wedding-planner-bundle/5.jpg",
+        ],
+      },
+      {
         name: "Budget & Finance Planner Bundle",
         price: "$4",
         href: "https://whop.com/merryhub/budget-finance-planner-bundle-monthly-budget-bills-savings-debt",
