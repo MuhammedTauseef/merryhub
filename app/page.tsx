@@ -161,6 +161,11 @@ export default function HomePage() {
             <div className="tool-card"><a href="/printables/2027-new-year-planner" aria-label="2027 New Year Planner — see what's inside">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/covers-web/merryhub-new-year-planner.webp" alt="2027 New Year Planner" loading="lazy" style={{ width: "100%", aspectRatio: "3 / 2", objectFit: "cover", borderRadius: 10, display: "block", marginBottom: 14 }}/></a><HomeGallery name="2027 New Year Planner" /><h3><a href="/printables/2027-new-year-planner" style={{ color: "inherit", textDecoration: "none" }}>2027 New Year Planner</a></h3><p>Goals, monthly pages and January weeks for a strong start to 2027.</p><p>$3</p><a href="https://whop.com/merryhub/products/2027-new-year-planner-printable-goals-monthly-pages-january-weeks-a4/" target="_blank" rel="noreferrer" className="btn btn-red">Buy — $3</a></div>
             <div className="tool-card"><a href="/printables/planners-productivity-bundle" aria-label="Planners & Productivity Bundle — see what's inside">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/covers-web/merryhub-planners-productivity.webp" alt="Planners & Productivity Bundle" loading="lazy" style={{ width: "100%", aspectRatio: "3 / 2", objectFit: "cover", borderRadius: 10, display: "block", marginBottom: 14 }}/></a><HomeGallery name="Planners & Productivity Bundle" /><h3><a href="/printables/planners-productivity-bundle" style={{ color: "inherit", textDecoration: "none" }}>Planners & Productivity Bundle</a></h3><p>Undated daily, weekly, habit and goal pages — 28 A4 pages, editable in the PDF.</p><p>$4</p><a href="https://whop.com/merryhub/planners-productivity-bundle-undated-daily-weekly-habit-goal-pages" target="_blank" rel="noreferrer" className="btn btn-red">Buy — $4 →</a></div>
           </div>
+          <div className="center mt-24">
+            <Link href="/printables" className="btn btn-red">
+              Browse all printables
+            </Link>
+          </div>
         </div>
       </section>
 
