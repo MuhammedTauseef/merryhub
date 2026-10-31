@@ -291,6 +291,19 @@ export const FALLBACK_GROUPS: PrintableGroup[] = [
         ],
       },
       {
+        name: "Business Planner Bundle",
+        price: "$4",
+        href: "https://whop.com/merryhub/business-planner-bundle-300-pages-projects-sales-marketing",
+        text: "300 A4 pages: goals, projects, clients, orders, money and marketing — editable in the PDF.",
+        imageUrls: [
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/covers-web/merryhub-business-planner.webp",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/business-planner-bundle/2.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/business-planner-bundle/3.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/business-planner-bundle/4.jpg",
+          "https://ffbqjncgkknnfdrhqjyt.supabase.co/storage/v1/object/public/blog-images/gallery/business-planner-bundle/5.jpg",
+        ],
+      },
+      {
         name: "Kids Coloring & Activity Pack",
         price: "$3",
         href: "https://whop.com/merryhub/kids-coloring-activity-pack-300-pages-colouring-mazes-learning/",
